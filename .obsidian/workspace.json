@@ -8,32 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "df904d9d6b684981",
-            "type": "leaf",
-            "state": {
-              "type": "bases",
-              "state": {
-                "file": "未命名.base",
-                "viewName": "表格"
-              },
-              "icon": "lucide-table",
-              "title": "未命名"
-            }
-          },
-          {
             "id": "d8ed7a815cd6382e",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "Excalidraw/Drawing 2026-03-23 16.43.18.excalidraw.md"
+                "file": "智能营销系统/合同库模块需求文档.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Drawing 2026-03-23 16.43.18.excalidraw"
+              "icon": "lucide-file",
+              "title": "合同库模块需求文档"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,26 +184,45 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "d8ed7a815cd6382e",
+  "active": "2da7e322cd0646cb",
   "lastOpenFiles": [
-    "TestSkill/测试文档.md",
-    "TestSkill/images",
-    "TestSkill",
+    "OnlyOffice/PythonSDK-获取文档位置ID.md",
+    "OnlyOffice/images",
+    "OnlyOffice",
+    "智能营销系统/合同库产品需求文档(PRD).md",
+    "智能体/智能体搭建方案前沿理念.md",
+    "AI-Agent/Skill开发完全指南.md",
+    "AI-Agent/diagrams/03-design-principles.excalidraw.md",
+    "AI-Agent/diagrams/02-skill-vs-prompt-vs-tool.excalidraw.md",
+    "AI-Agent/diagrams/01-skill-overview.excalidraw.md",
+    "AI-Agent/diagrams/18-script-composition.excalidraw.md",
+    "AI-Agent/diagrams/17-conditional-loading.excalidraw.md",
+    "AI-Agent/diagrams/16-checklist.excalidraw.md",
+    "AI-Agent/diagrams/15-custom-skill-system.excalidraw.md",
+    "AI-Agent/diagrams/14-codex-skill-structure.excalidraw.md",
+    "AI-Agent/diagrams/13-openclaw-architecture.excalidraw.md",
+    "AI-Agent/diagrams/12-platform-integration.excalidraw.md",
+    "AI-Agent/diagrams/11-code-review.excalidraw.md",
+    "AI-Agent/diagrams/10-db-migration.excalidraw.md",
+    "AI-Agent/diagrams/09-api-doc-flow.excalidraw.md",
+    "AI-Agent/diagrams/08-workflow.excalidraw.md",
+    "AI-Agent/diagrams/07-resource-types.excalidraw.md",
+    "AI-Agent/diagrams/06-directory-structure.excalidraw.md",
+    "AI-Agent/diagrams/05-progressive-loading.excalidraw.md",
+    "AI-Agent/diagrams/04-freedom-levels.excalidraw.md",
+    "AI-Agent/diagrams",
+    "AI-Agent/generate_skill_guide.py",
+    "DeerFlow/DeerFlow 2.0 本地部署指南.md",
+    "DeerFlow/images",
+    "DeerFlow",
+    "codex-extension-guide/Codex扩展与Superpowers增强指南.md",
+    "RAGFlow/RAGFlow知识库配置指南.md",
+    "智能营销系统/合同库模块需求文档.md",
     "未命名.base",
-    "Excalidraw/Drawing 2026-03-23 16.43.18.excalidraw.md",
-    "Excalidraw",
-    "Ai/框架/LangChain/未命名.md",
-    "Superpowers/使用指南.md",
-    "Excalidraw/Drawing 2026-03-23 12.52.08.excalidraw.md",
-    "LangChain/LangChain全链路实战指南.md",
-    "LangChain/images",
-    "LangChain",
-    "Ai/框架/LangChain",
-    "未命名 1.base",
-    "2026-03-21.md",
+    "RAGFlow",
+    "codex-extension-guide",
+    "AI-Agent",
     "未命名.canvas",
-    "README.md",
-    "未命名 1.canvas",
-    "MySQL/索引优化.md"
+    "未命名 1.canvas"
   ]
 }
