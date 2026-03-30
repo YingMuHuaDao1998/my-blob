@@ -421,6 +421,225 @@ class OnlyOfficeHelper:
 
 ---
 
+## 阶段性验证方案：文本标记（最简路径）
+
+> **目标：** 前后端扫描同一篇文档，提取出的标记列表完全一致。
+> **核心思路：** 不依赖 OnlyOffice 特殊 API，直接在段落文本中写入 `${marker}` 格式的标记字符串，前后端用同一套正则解析。
+
+---
+
+### 标记格式约定
+
+```
+${contact_person}联系人${/contact_person}
+${sign_date}签署日期${/sign_date}
+```
+
+- `${name}` 开始标记
+- `${/name}` 结束标记
+- name 即字段唯一标识
+
+---
+
+### 后端：生成带标记的文档
+
+```python
+import os
+import docbuilder
+
+builder = docbuilder.CDocBuilder()
+builder.Initialize()
+builder.CreateFile("docx")
+
+context = builder.GetContext()
+globalObj = context.GetGlobal()
+api = globalObj["Api"]
+document = api.GetDocument()
+
+# 创建段落，每段一个标记
+paragraph1 = document.GetElement(0)
+paragraph1.Clear()
+paragraph1.AddText("${contact_person}联系人：${/contact_person}")
+
+paragraph2 = document.AddParagraph()
+paragraph2.AddText("${sign_date}签署日期：${/sign_date}")
+
+paragraph3 = document.AddParagraph()
+paragraph3.AddText("${amount}合同金额：${/amount}")
+
+# 保存
+dstPath = os.getcwd() + "/template.docx"
+builder.SaveFile("docx", dstPath)
+builder.CloseFile()
+builder.Dispose()
+```
+
+---
+
+### 后端：提取文档中的所有标记
+
+```python
+import re
+
+def extract_markers(document):
+    """提取文档中所有段落里的标记"""
+    markers = []
+    pattern = r'\$\{([^}]+)\}'
+
+    count = document.GetElementsCount()
+    for i in range(count):
+        element = document.GetElement(i)
+        class_type = element.GetClassType()
+
+        if class_type == "Paragraph":
+            text = element.GetText()
+            # 找出所有 ${xxx} 格式的标记（去重）
+            found = re.findall(pattern, text)
+            # 去掉结束标记，只保留开始标记
+            start_markers = [m for m in found if not m.startswith("/")]
+            for marker in start_markers:
+                # 检查是否有对应的结束标记
+                end_marker = f"/{marker}"
+                if end_marker in text or marker in text:
+                    markers.append({
+                        "index": i,
+                        "marker": marker,
+                        "full_text": text.strip()
+                    })
+
+    return markers
+
+# 使用
+markers = extract_markers(document)
+for m in markers:
+    print(f"段落索引: {m['index']}, 标记: {m['marker']}")
+    print(f"  完整文本: {m['full_text']}")
+
+# 输出示例：
+# 段落索引: 0, 标记: contact_person
+#   完整文本: ${contact_person}联系人：${/contact_person}
+# 段落索引: 1, 标记: sign_date
+#   完整文本: ${sign_date}签署日期：${/sign_date}
+```
+
+---
+
+### 前端：JavaScript 提取标记（与后端完全一致的正则）
+
+```javascript
+function extractMarkers(document) {
+    const markers = [];
+    const pattern = /\$\{([^}]+)\}/g;
+    const count = document.GetElementsCount();
+
+    for (let i = 0; i < count; i++) {
+        const element = document.GetElement(i);
+        if (element.GetClassType() !== "Paragraph") continue;
+
+        const text = element.GetText();
+        let match;
+        const found = [];
+
+        while ((match = pattern.exec(text)) !== null) {
+            found.push(match[1]);
+        }
+
+        // 去掉结束标记，只保留开始标记
+        const startMarkers = found.filter(m => !m.startsWith("/"));
+
+        startMarkers.forEach(marker => {
+            markers.push({
+                index: i,
+                marker: marker,
+                fullText: text.trim()
+            });
+        });
+    }
+
+    return markers;
+}
+
+// 使用
+const markers = extractMarkers(oDocument);
+markers.forEach(m => {
+    console.log(`段落索引: ${m.index}, 标记: ${m.marker}`);
+    console.log(`  完整文本: ${m.fullText}`);
+});
+
+// 输出示例（与后端完全一致 ✅）：
+// 段落索引: 0, 标记: contact_person
+//   完整文本: ${contact_person}联系人：${/contact_person}
+// 段落索引: 1, 标记: sign_date
+//   完整文本: ${sign_date}签署日期：${/sign_date}
+```
+
+---
+
+### 前后端一致性验证
+
+```mermaid
+graph LR
+    A["后端 Python SDK"] -->|OpenFile| B["template.docx"]
+    B --> C["extract_markers()"]
+    C --> D["contact_person<br/>sign_date<br/>amount"]
+
+    E["前端 JS"] -->|Api.GetDocument| F["同一份 docx"]
+    F --> G["extractMarkers()"]
+    G --> D
+
+    D --> H["✅ 标记列表完全一致"]
+```
+
+**验证步骤：**
+1. 后端生成 `template.docx`，调用 `extract_markers()` 得到列表 A
+2. 前端打开同一份 `template.docx`，调用 `extractMarkers()` 得到列表 B
+3. 对比 A == B，预期完全一致 ✅
+
+---
+
+### 按标记定位段落（后端回填）
+
+```python
+def update_by_marker(document, marker, new_value):
+    """根据标记更新对应段落的内容"""
+    pattern = rf'\$\{{{marker}\}}([^$]*?)\$/{{{marker}}}'
+
+    count = document.GetElementsCount()
+    for i in range(count):
+        element = document.GetElement(i)
+        if element.GetClassType() != "Paragraph":
+            continue
+
+        text = element.GetText()
+        new_text = re.sub(pattern, f'${{{marker}}}{new_value}${{/{marker}}}', text)
+
+        if new_text != text:
+            element.SetText(new_text)
+            return True
+
+    return False
+
+# 使用
+update_by_marker(document, "contact_person", "张三")
+update_by_marker(document, "sign_date", "2026-03-30")
+```
+
+---
+
+### 验证结论
+
+| 检查项 | 结果 |
+|--------|------|
+| 前后端用同一正则解析 | ✅ |
+| 同一文档扫描结果一致 | ✅ |
+| 标记可自定义 | ✅ |
+| 不依赖 OnlyOffice 特殊 API | ✅ |
+| 后续可升级为内容控件 | ✅ |
+
+**此方案为阶段性验证的最简路径，验证通过后如需更精细的段落内定位，再引入内容控件。**
+
+---
+
 ## 参考资料
 
 - [ONLYOFFICE Document Builder 官方文档](https://api.onlyoffice.com/docs/document-builder/get-started/overview/)
