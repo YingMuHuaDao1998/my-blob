@@ -35,60 +35,60 @@ flowchart TD
     A[用户需求] --> B[OpenSpec: 提出变更]
     B --> C[Human + AI 对齐规范]
     C --> D[生成 specs + tasks.md]
-    D --> E[Superpowers: brainstorming]
-    E --> F[Superpowers: writing-plans]
-    F --> G[Superpowers: subagent-driven-dev]
-    G --> H[Superpowers: TDD]
-    H --> I[Superpowers: code-review]
-    I --> J[Superpowers: finishing-branch]
-    J --> K[OpenSpec: archive 变更]
+    D --> E[Superpowers: 头脑风暴]
+    E --> F[Superpowers: 编写计划]
+    F --> G[Superpowers: 子代理开发]
+    G --> H[Superpowers: 测试驱动]
+    H --> I[Superpowers: 代码审查]
+    I --> J[Superpowers: 分支完成]
+    J --> K[OpenSpec: 归档变更]
 ```
 
 ### 阶段详解
 
-#### Phase 1：需求澄清（OpenSpec + Superpowers Brainstorming）
+#### 阶段一：需求澄清（OpenSpec + Superpowers 头脑风暴）
 
 **OpenSpec** 的 `/opsx:propose` 启动结构化提案流程：
 
 ```
 用户: /opsx:propose add-user-auth
 AI: Created openspec/changes/add-user-auth/
-  ✓ proposal.md — why we're doing this
-  ✓ specs/ — requirements and scenarios
-  ✓ design.md — technical approach
-  ✓ tasks.md — implementation checklist
-Ready for implementation!
+  ✓ proposal.md — 为什么做这件事
+  ✓ specs/ — 需求和场景
+  ✓ design.md — 技术方案
+  ✓ tasks.md — 实现检查清单
+准备开始实现！
 ```
 
-**Superpowers Brainstorming** 进行苏格拉底式需求深挖：
+**Superpowers 头脑风暴** 进行苏格拉底式需求深挖：
 
 - 提出澄清性问题
 - 探索替代方案
 - 分段展示设计供人工批准
 
-#### Phase 2：规范确认（OpenSpec specs）
+#### 阶段二：规范确认（OpenSpec specs）
 
 OpenSpec 生成的 `tasks.md` 是具体实现检查清单：
 
 ```markdown
 ## tasks.md 示例
 
-- [ ] Create User model with email/password fields
-- [ ] Add password hashing with bcrypt
-- [ ] Implement JWT token generation
-- [ ] Create login API endpoint POST /auth/login
-- [ ] Add input validation middleware
-- [ ] Write unit tests for auth service
+- [ ] 创建 User 模型，包含 email/password 字段
+- [ ] 使用 bcrypt 对密码加密
+- [ ] 实现 JWT token 生成
+- [ ] 创建登录 API 端点 POST /auth/login
+- [ ] 添加输入验证中间件
+- [ ] 编写 auth 服务的单元测试
 ```
 
 这些任务直接作为 Superpowers `writing-plans` 的输入。
 
-#### Phase 3：执行与验证（Superpowers）
+#### 阶段三：执行与验证（Superpowers）
 
 ```mermaid
-graph LR
-    A[按 tasks 执行] --> B[TDD RED-GREEN-REFACTOR]
-    B --> C[Code Review]
+flowchart LR
+    A[按 tasks 执行] --> B[TDD 红-绿-重构]
+    B --> C[代码审查]
     C --> D[验证修复有效]
     D --> E[提交/合并]
 ```
@@ -139,7 +139,7 @@ opsx --version
 
 ## 实用技巧
 
-### 技巧 1：OpenSpec 作为 Superpowers 的输入层
+### 技巧一：OpenSpec 作为 Superpowers 的输入层
 
 **问题**：Superpowers 的 brainstorming 有时过于发散
 
@@ -153,7 +153,7 @@ opsx --version
 help me plan this feature using the tasks.md
 ```
 
-### 技巧 2：用 Superpowers 审查 OpenSpec 生成的 Tasks
+### 技巧二：用 Superpowers 审查 OpenSpec 生成的 Tasks
 
 **问题**：OpenSpec 生成的 tasks 可能过于简单
 
@@ -164,7 +164,7 @@ help me plan this feature using the tasks.md
 help me expand these tasks into a detailed plan with 2-5 min subtasks
 ```
 
-### 技巧 3：OpenSpec archive 作为项目历史
+### 技巧三：OpenSpec archive 作为项目历史
 
 OpenSpec 的 archive 功能保留了完整的变更历史：
 
@@ -173,24 +173,24 @@ openspec/changes/archive/2025-01-23-add-dark-mode/
 ├── proposal.md
 ├── design.md
 ├── specs/
-└── tasks.md (checked)
+└── tasks.md (已勾选)
 ```
 
 这些归档可以直接作为项目的技术决策文档。
 
-### 技巧 4：Superpowers TDD 验证 OpenSpec Tasks
+### 技巧四：Superpowers TDD 验证 OpenSpec Tasks
 
 OpenSpec 的 tasks 只定义"做什么"，Superpowers 的 TDD 确保"做得对"：
 
 ```mermaid
-graph TD
+flowchart TD
     A[OpenSpec task: 创建用户模型] --> B[Superpowers: 写失败测试]
     B --> C[写最小实现]
     C --> D[Superpowers: 重构]
     D --> E[OpenSpec: 标记任务完成]
 ```
 
-### 技巧 5：双层代码审查
+### 技巧五：双层代码审查
 
 **OpenSpec design.md** → 检查是否按照规范实现
 **Superpowers code-review** → 检查代码质量
@@ -213,7 +213,7 @@ graph TD
 
 | 命令 | 作用 |
 |------|------|
-| `/opsx:propose <name>` | 创建新变更提案 |
+| `/opsx:propose <名称>` | 创建新变更提案 |
 | `/opsx:status` | 查看当前变更状态 |
 | `/opsx:diff` | 查看规范差异 |
 | `/opsx:archive` | 归档已完成变更 |
@@ -233,19 +233,19 @@ graph TD
 
 ## 典型使用场景
 
-### 场景 1：新功能开发
+### 场景一：新功能开发
 
 ```mermaid
 flowchart LR
     A["/opsx:propose 新功能"] --> B[对齐 specs]
-    B --> C[Superpowers brainstorming]
+    B --> C[Superpowers 头脑风暴]
     C --> D[细化 tasks]
     D --> E[TDD 实现]
-    E --> F[Code Review]
+    E --> F[代码审查]
     F --> G["/opsx:archive"]
 ```
 
-### 场景 2：Bug 修复
+### 场景二：Bug 修复
 
 ```
 # 用 OpenSpec 记录修复方案
@@ -256,7 +256,7 @@ help me debug why login redirect isn't working
 run tests to verify the fix
 ```
 
-### 场景 3：代码重构
+### 场景三：代码重构
 
 ```
 # OpenSpec 定义重构范围
@@ -270,23 +270,23 @@ help me plan the refactoring with test coverage
 
 ## 常见问题
 
-### Q1：两个工具会不会冲突？
+### 问一：两个工具会不会冲突？
 
 **不会**。它们作用于不同阶段：
 
 - OpenSpec → 代码编写之前（对齐）
 - Superpowers → 代码编写及之后（执行）
 
-### Q2：可以只用 OpenSpec 不用 Superpowers 吗？
+### 问二：可以只用 OpenSpec 不用 Superpowers 吗？
 
 可以。OpenSpec 独立完整，Superpowers 是增强选项。
 
-### Q3：支持哪些 AI 助手？
+### 问三：支持哪些 AI 助手？
 
 - **OpenSpec**：20+ AI 助手（Claude Code、Cursor、Copilot、Windsurf 等）
 - **Superpowers**：Claude Code、Codex、Cursor、OpenCode、Gemini CLI 等
 
-### Q4：需要网络吗？
+### 问四：需要网络吗？
 
 都不需要 API Key，纯本地运行。
 
@@ -303,4 +303,4 @@ help me plan the refactoring with test coverage
 
 ## 更新日志
 
-- **2026-03-31**: 初始版本，整合 Superpowers 与 OpenSpec 结合使用技巧
+- **2026-03-31**：初始版本，整合 Superpowers 与 OpenSpec 结合使用技巧
