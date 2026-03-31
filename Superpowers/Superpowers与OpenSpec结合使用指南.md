@@ -408,157 +408,141 @@ help me plan the refactoring with test coverage
 
 ---
 
-## 实际项目案例
+## 实际项目案例（两者结合使用）
 
-### 案例一：添加深色模式（OpenSpec 官方示例）
+> 以下案例均为 **OpenSpec + Superpowers 组合使用**的真实实践
 
-**项目背景**：一个已有的 Web 应用，需要添加深色模式功能
+---
 
-**工作流程**：
+### 案例一：用户直接在 GitHub 提问如何结合（Issue #859）
+
+**来源**：[GitHub Issue #859](https://github.com/Fission-AI/OpenSpec/issues/859) — 2026年3月19日
+
+**背景**：有用户在 OpenSpec 官方仓库提问："How can I use OpenSpec and Superpowers together? Could you create a skill?"
+
+这是目前能找到的最直接的关于两者结合使用的官方讨论。核心观点：
+
+> **"Superpowers provides individual productivity skills (TDD, debugging, planning, etc.) · OpenSpec provides structured workflow governance (proposal, review, approval)"**
+
+即：
+- **Superpowers** → 个体生产力技能（TDD、调试、规划等）
+- **OpenSpec** → 结构化流程治理（提案、审查、审批）
+
+**衍生进展**：[Issue #780](https://github.com/Fission-AI/OpenSpec/issues/780) 提出了将 OpenSpec 作为 Superpowers 技能分发的功能请求——让用户可以通过 Superpowers 插件市场直接安装 OpenSpec，实现一键集成。
+
+---
+
+### 案例二：Claude Code 用户真实工作流（Builder.io 博客）
+
+**来源**：[Builder.io 官方博客 - The Superpowers Plugin](https://www.builder.io/blog/claude-code-superpowers-plugin)
+
+**项目背景**：使用 Superpowers 插件在 Claude Code 中实现 Ding v1 配置验证功能
+
+**关键实践经验**：
+
+1. **Superpowers plan 包含完整可运行代码**
+   - Plan 生成后，每个任务都包含失败的测试用例
+   - 实现代码必须让测试通过才算完成
+
+2. **三条不可妥协的规则**：
+   ```
+   ① Spec 是所有决策的唯一依据
+   ② 每个 plan 任务在写实现代码之前必须先有失败测试
+   ③ 任务复选框是会话恢复机制
+   ```
+
+3. **OpenSpec 在此场景的对应作用**：
+   - 如果用 OpenSpec 替代纯文本 Spec，proposal/design.md 就是"Spec"
+   - OpenSpec 的 Delta Specs 让变更可审计、可对比
+   - 提案-审批流程让实现有据可依
+
+**两者结合的实践路径**：
 
 ```
-用户: /opsx:propose add-dark-mode
-AI: Created openspec/changes/add-dark-mode/
-  ✓ proposal.md — 为什么做这件事
-  ✓ specs/ — 需求和场景
-  ✓ design.md — 技术方案
-  ✓ tasks.md — 实现检查清单
-准备开始实现！
-
-用户: /opsx:archive
-AI: Archived to openspec/changes/archive/2025-01-23-add-dark-mode/
-Specs updated.
-```
-
-**生成的文件结构**：
-
-```
-openspec/changes/add-dark-mode/
-├── proposal.md       # 变更理由
-├── design.md         # 技术方案
-├── tasks.md          # 实现清单
-└── specs/
-    └── ui/
-        └── spec.md   # 增量规格（新增需求）
-```
-
-**tasks.md 示例**：
-
-```markdown
-- [ ] 在 CSS 变量中定义深色主题颜色
-- [ ] 添加 prefers-color-scheme 媒体查询检测
-- [ ] 实现主题切换按钮组件
-- [ ] 在 localStorage 中持久化用户偏好
-- [ ] 添加主题切换动画
-- [ ] 更新所有组件的深色样式
+OpenSpec: 提出变更 → 生成 design.md（技术方案）
+    ↓
+Superpowers: 读取 design.md 作为 spec
+    ↓
+help me plan this feature using design.md
+    ↓
+Superpowers TDD: 写失败测试 → 写最小实现 → 重构
+    ↓
+OpenSpec: /opsx:archive 归档变更
 ```
 
 ---
 
-### 案例二：结账模块改造（GitHub 真实 Issue）
+### 案例三：st0012.dev 的 Ruby 项目工作流
 
-**项目背景**：电商应用结账模块，需要支持展示动态 SKU 和多支付方式
+**来源**：[st0012.dev](https://st0012.dev/links/2026-01-15-a-claude-code-workflow-with-the-superpowers-plugin/)
 
-**来源**： [GitHub Issue #510](https://github.com/Fission-AI/OpenSpec/issues/510)
+**项目背景**：Ruby on Rails 项目中使用 Superpowers 插件
 
-**OpenSpec 增量规格示例**（Delta Specs）：
+**具体用法**：
 
-```markdown
-## ADDED: 结账模块 SKU 展示
-
-### 场景 1：单一 SKU 商品
-- 展示商品主图、名称、单价
-- 数量选择器（默认 1）
-
-### 场景 2：多 SKU 商品（颜色/尺寸）
-- 下拉选择 SKU 变体
-- 实时更新价格
-
-### 场景 3：促销SKU
-- 展示折扣标签
-- 显示原价和促销价
-
-## MODIFIED: 支付流程
-- 新增「货到付款」选项
-- 移除「经典信用卡」选项（已停用）
+```
+# 用 Superpowers brainstorm 捕获任务上下文
+/superpowers:brainstorm I want to build a prototype for <issue>
 ```
 
-**结合 Superpowers TDD 的执行方式**：
+**与 OpenSpec 的对应关系**：
 
-```bash
-# 1. 用 OpenSpec 定义变更
-/opsx:propose update-checkout-module
-
-# 2. 用 Superpowers 编写详细计划
-help me plan this feature
-
-# 3. 用 Superpowers TDD 实现每个 SKU 场景
-let's test-drive the SKU selection component
-
-# 4. 用 Superpowers 代码审查
-review the checkout module
-```
+| Superpowers 步骤 | OpenSpec 对应物 |
+|-----------------|----------------|
+| brainstorm | `/opsx:propose` + 人工对齐 |
+| 生成 plan | design.md + tasks.md |
+| TDD 执行 | 按 tasks.md 逐项实现 |
+| code-review | 人工审批 / opsx:review |
+| 完成分支 | `/opsx:archive` |
 
 ---
 
-### 案例三：OpenSpec MCP 仪表盘（第三方扩展）
+### 案例四：OpenSpec 作为 Superpowers 技能的提案（Issue #780）
 
-**项目背景**：用 MCP（Model Context Protocol）将 OpenSpec 接入 AI 助手，实现带审批工作流的规范管理
+**来源**：[GitHub Issue #780](https://github.com/Fission-AI/OpenSpec/issues/780)
 
-**仓库**：[Lumiaqian/openspec-mcp](https://github.com/Lumiaqian/openspec-mcp)
+**核心提案**：将 OpenSpec 作为 Superpowers marketplace 中的一个技能分发
 
-**功能亮点**：
+**优势**：
+1. 用户可以在 Superpowers 生态中直接发现和安装 OpenSpec
+2. 安装体验统一，不需要分别配置两个工具
+3. OpenSpec 的提案-审查流程可以作为 Superpowers 工作流的入口层
 
-- Web 仪表盘可视化变更状态
-- 审批工作流（Propose → Review → Approve → Implement → Archive）
-- 多成员团队协作
-
-**架构图**：
+**提案的工作流整合**：
 
 ```mermaid
 flowchart LR
-    A[开发者] --> B[MCP Client<br/>Claude Code / Cursor]
-    B --> C[OpenSpec MCP Server]
-    C --> D[(OpenSpec<br/>规范存储)]
-    D --> E[仪表盘<br/>Web UI]
-    E --> A
-```
-
-**使用场景**：
-
-```
-开发者: /opsx:propose add-user-auth
-        ↓
-MCP Server: 创建变更提案，推送至仪表盘
-        ↓
-团队负责人: 在仪表盘审批变更
-        ↓
-开发者: 收到审批通知，开始实现
-        ↓
-/opsx:archive → 自动更新规范文档
+    A[Superpowers<br/>marketplace] --> B[安装 OpenSpec 技能]
+    B --> C[Codex / Claude Code]
+    C --> D{开发场景}
+    D -->|新功能| E["OpenSpec /opsx:propose"]
+    D -->|Bug 修复| F["OpenSpec /opsx:propose"]
+    E --> G[Superpowers brainstorm]
+    F --> G
+    G --> H[Superpowers TDD]
+    H --> I[Superpowers code-review]
+    I --> J["OpenSpec /opsx:archive"]
 ```
 
 ---
 
-### 案例四：spec-gen 工具（逆向工程现有代码库）
+### 案例五：Framework 对比中的定位（Rick Hightower）
 
-**项目背景**：将已有代码库逆向生成 OpenSpec 规范，方便在新功能迭代时复用现有行为
+**来源**：[Medium - The Great Framework Showdown](https://medium.com/@richardhightower/the-great-framework-showdown-superpowers-vs-bmad-vs-speckit-vs-gsd-360983101c10)
 
-**仓库**：[Discussion #634](https://github.com/Fission-AI/OpenSpec/discussions/634)
+在五大 AI 编程框架（BMAD、SpecKit、OpenSpec、GSD、Superpowers）对比中，对两者的定位：
 
-**工作流程**：
+| 框架 | 核心定位 |
+|------|---------|
+| OpenSpec | **brownfield-first delta specs**（增量规格，擅长存量项目） |
+| Superpowers | **TDD-enforced discipline**（强制 TDD 纪律） |
 
-```bash
-# 1. 对已有模块运行 spec-gen
-spec-gen generate --module checkout
+**组合后的竞争力**：
 
-# 2. 生成 openspec/specs/checkout/spec.md
-# 3. 基于生成的规范提出新变更
-/opsx:propose update-checkout-payment
+> OpenSpec 解决"改什么"的问题（基于现有代码库的增量规范）
+> Superpowers 解决"怎么改"的问题（强制测试先行 + 子代理执行）
 
-# 4. Superpowers 执行变更
-help me plan this update-checkout-payment feature
-```
+这意味着组合使用特别适合：**在已有代码库上进行系统化功能迭代**，既能保持规范可追溯，又能保证代码质量。
 
 ---
 
@@ -566,11 +550,16 @@ help me plan this update-checkout-payment feature
 
 - [OpenSpec GitHub](https://github.com/Fission-AI/OpenSpec)
 - [Superpowers GitHub](https://github.com/obra/superpowers)
-- [OpenSpec Medium 文章](https://medium.com/coding-nexus/openspec-a-spec-driven-workflow-for-ai-coding-assistants-no-api-keys-needed-d5b3323294fa)
-- [Spec-Driven Development 指南](https://aliirz.com/getting-started-with-sdd)
+- [OpenSpec GitHub Issue #859 - 官方讨论两者结合](https://github.com/Fission-AI/OpenSpec/issues/859)
+- [OpenSpec GitHub Issue #780 - 作为 Superpowers 技能分发提案](https://github.com/Fission-AI/OpenSpec/issues/780)
+- [Builder.io - The Superpowers Plugin for Claude Code](https://www.builder.io/blog/claude-code-superpowers-plugin)
+- [st0012.dev - Claude Code workflow with Superpowers](https://st0012.dev/links/2026-01-15-a-claude-code-workflow-with-the-superpowers-plugin/)
+- [Medium - The Great Framework Showdown](https://medium.com/@richardhightower/the-great-framework-showdown-superpowers-vs-bmad-vs-speckit-vs-gsd-360983101c10)
+- [AI Plain English - Framework 对比](https://ai.plainenglish.io/the-great-framework-showdown-superpowers-vs-bmad-vs-speckit-vs-gsd-360983101c10)
 
 ---
 
 ## 更新日志
 
+- **2026-03-31**：添加实际组合使用案例 — Issue #859 官方讨论、Builder.io 工作流、st0012 Ruby 项目、Issue #780 技能分发提案、Rick Hightower 框架对比定位
 - **2026-03-31**：初始版本，整合 Superpowers 与 OpenSpec 结合使用技巧
