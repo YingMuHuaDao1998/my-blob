@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "OnlyOffice/PythonSDK-获取文档位置ID.md",
+                "file": "AI-Agent/Skill开发完全指南.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "PythonSDK-获取文档位置ID"
+              "title": "Skill开发完全指南"
             }
           }
         ]
@@ -184,16 +184,21 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "2da7e322cd0646cb",
+  "active": "d8ed7a815cd6382e",
   "lastOpenFiles": [
+    "Superpowers/Superpowers与OpenSpec结合使用指南.md",
+    "OnlyOffice/PythonSDK-获取文档位置ID.md",
+    "LangChain/LangChain最佳实践.md",
+    "LangChain/LangChain全链路实战指南.md",
+    "LangChain/LangChain Agent项目结构指南.md",
+    "Ai/框架/LangChain/未命名.md",
+    "AI-Agent/Skill开发完全指南.md",
     "OnlyOffice/OnlyOffice对接-外部文档标记识别方案.md",
     "智能营销系统/合同库模块需求文档.md",
-    "OnlyOffice/PythonSDK-获取文档位置ID.md",
     "OnlyOffice/images",
     "OnlyOffice",
     "智能营销系统/合同库产品需求文档(PRD).md",
     "智能体/智能体搭建方案前沿理念.md",
-    "AI-Agent/Skill开发完全指南.md",
     "AI-Agent/diagrams/03-design-principles.excalidraw.md",
     "AI-Agent/diagrams/02-skill-vs-prompt-vs-tool.excalidraw.md",
     "AI-Agent/diagrams/01-skill-overview.excalidraw.md",
@@ -209,15 +214,10 @@
     "AI-Agent/diagrams/09-api-doc-flow.excalidraw.md",
     "AI-Agent/diagrams/08-workflow.excalidraw.md",
     "AI-Agent/diagrams/07-resource-types.excalidraw.md",
-    "AI-Agent/diagrams/06-directory-structure.excalidraw.md",
-    "AI-Agent/diagrams/05-progressive-loading.excalidraw.md",
-    "AI-Agent/diagrams/04-freedom-levels.excalidraw.md",
     "AI-Agent/diagrams",
     "AI-Agent/generate_skill_guide.py",
-    "DeerFlow/DeerFlow 2.0 本地部署指南.md",
     "DeerFlow/images",
     "DeerFlow",
-    "codex-extension-guide/Codex扩展与Superpowers增强指南.md",
     "未命名.base",
     "RAGFlow",
     "codex-extension-guide",
