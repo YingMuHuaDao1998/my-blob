@@ -408,6 +408,160 @@ help me plan the refactoring with test coverage
 
 ---
 
+## 实际项目案例
+
+### 案例一：添加深色模式（OpenSpec 官方示例）
+
+**项目背景**：一个已有的 Web 应用，需要添加深色模式功能
+
+**工作流程**：
+
+```
+用户: /opsx:propose add-dark-mode
+AI: Created openspec/changes/add-dark-mode/
+  ✓ proposal.md — 为什么做这件事
+  ✓ specs/ — 需求和场景
+  ✓ design.md — 技术方案
+  ✓ tasks.md — 实现检查清单
+准备开始实现！
+
+用户: /opsx:archive
+AI: Archived to openspec/changes/archive/2025-01-23-add-dark-mode/
+Specs updated.
+```
+
+**生成的文件结构**：
+
+```
+openspec/changes/add-dark-mode/
+├── proposal.md       # 变更理由
+├── design.md         # 技术方案
+├── tasks.md          # 实现清单
+└── specs/
+    └── ui/
+        └── spec.md   # 增量规格（新增需求）
+```
+
+**tasks.md 示例**：
+
+```markdown
+- [ ] 在 CSS 变量中定义深色主题颜色
+- [ ] 添加 prefers-color-scheme 媒体查询检测
+- [ ] 实现主题切换按钮组件
+- [ ] 在 localStorage 中持久化用户偏好
+- [ ] 添加主题切换动画
+- [ ] 更新所有组件的深色样式
+```
+
+---
+
+### 案例二：结账模块改造（GitHub 真实 Issue）
+
+**项目背景**：电商应用结账模块，需要支持展示动态 SKU 和多支付方式
+
+**来源**： [GitHub Issue #510](https://github.com/Fission-AI/OpenSpec/issues/510)
+
+**OpenSpec 增量规格示例**（Delta Specs）：
+
+```markdown
+## ADDED: 结账模块 SKU 展示
+
+### 场景 1：单一 SKU 商品
+- 展示商品主图、名称、单价
+- 数量选择器（默认 1）
+
+### 场景 2：多 SKU 商品（颜色/尺寸）
+- 下拉选择 SKU 变体
+- 实时更新价格
+
+### 场景 3：促销SKU
+- 展示折扣标签
+- 显示原价和促销价
+
+## MODIFIED: 支付流程
+- 新增「货到付款」选项
+- 移除「经典信用卡」选项（已停用）
+```
+
+**结合 Superpowers TDD 的执行方式**：
+
+```bash
+# 1. 用 OpenSpec 定义变更
+/opsx:propose update-checkout-module
+
+# 2. 用 Superpowers 编写详细计划
+help me plan this feature
+
+# 3. 用 Superpowers TDD 实现每个 SKU 场景
+let's test-drive the SKU selection component
+
+# 4. 用 Superpowers 代码审查
+review the checkout module
+```
+
+---
+
+### 案例三：OpenSpec MCP 仪表盘（第三方扩展）
+
+**项目背景**：用 MCP（Model Context Protocol）将 OpenSpec 接入 AI 助手，实现带审批工作流的规范管理
+
+**仓库**：[Lumiaqian/openspec-mcp](https://github.com/Lumiaqian/openspec-mcp)
+
+**功能亮点**：
+
+- Web 仪表盘可视化变更状态
+- 审批工作流（Propose → Review → Approve → Implement → Archive）
+- 多成员团队协作
+
+**架构图**：
+
+```mermaid
+flowchart LR
+    A[开发者] --> B[MCP Client<br/>Claude Code / Cursor]
+    B --> C[OpenSpec MCP Server]
+    C --> D[(OpenSpec<br/>规范存储)]
+    D --> E[仪表盘<br/>Web UI]
+    E --> A
+```
+
+**使用场景**：
+
+```
+开发者: /opsx:propose add-user-auth
+        ↓
+MCP Server: 创建变更提案，推送至仪表盘
+        ↓
+团队负责人: 在仪表盘审批变更
+        ↓
+开发者: 收到审批通知，开始实现
+        ↓
+/opsx:archive → 自动更新规范文档
+```
+
+---
+
+### 案例四：spec-gen 工具（逆向工程现有代码库）
+
+**项目背景**：将已有代码库逆向生成 OpenSpec 规范，方便在新功能迭代时复用现有行为
+
+**仓库**：[Discussion #634](https://github.com/Fission-AI/OpenSpec/discussions/634)
+
+**工作流程**：
+
+```bash
+# 1. 对已有模块运行 spec-gen
+spec-gen generate --module checkout
+
+# 2. 生成 openspec/specs/checkout/spec.md
+# 3. 基于生成的规范提出新变更
+/opsx:propose update-checkout-payment
+
+# 4. Superpowers 执行变更
+help me plan this update-checkout-payment feature
+```
+
+---
+
 ## 参考资料
 
 - [OpenSpec GitHub](https://github.com/Fission-AI/OpenSpec)
