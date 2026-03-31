@@ -95,29 +95,101 @@ flowchart LR
 
 ---
 
-## 安装与配置
+## 安装与配置（Codex 篇）
 
-### 安装 OpenSpec
+### 前置条件
+
+- OpenAI Codex CLI 已安装
+- Git
+
+---
+
+### 安装 OpenSpec（Codex）
+
+OpenSpec 通过技能（Skills）和斜杠命令（Slash Commands）集成到 Codex。
+
+**方法一：自动安装（推荐）**
 
 ```bash
-npm install -g @fission-ai/openspec@latest
+# 初始化 OpenSpec，选择 Codex 平台
+openspec init --platform codex
+
+# 或全局安装（所有平台）
+openspec init --global
 ```
 
-验证安装：
+**方法二：手动安装**
 
 ```bash
-opsx --version
+# 1. 创建 Codex 技能目录
+mkdir -p ~/.codex/skills
+
+# 2. 克隆 OpenSpec 仓库
+git clone https://github.com/Fission-AI/OpenSpec.git /tmp/openspec
+
+# 3. 复制 Codex 技能文件
+cp -r /tmp/openspec/.codex/skills/openspec-* ~/.codex/skills/
+
+# 4. 创建斜杠命令提示文件
+mkdir -p ~/.codex/prompts
+cp /tmp/openspec/.codex/prompts/opsx-*.md ~/.codex/prompts/
 ```
 
-### 安装 Superpowers（以 Claude Code 为例）
+**验证安装**
+
+启动 Codex 新会话，输入：
+
+```
+/opsx:help
+```
+
+如果看到 OpenSpec 帮助信息，说明安装成功。
+
+---
+
+### 安装 Superpowers（Codex）
+
+让 Codex 自动执行安装：
+
+```
+Fetch and follow instructions from https://raw.githubusercontent.com/obra/superpowers/refs/heads/main/.codex/INSTALL.md
+```
+
+或手动安装：
 
 ```bash
-/plugin install superpowers@claude-plugins-official
+# 1. 克隆 Superpowers 仓库
+git clone https://github.com/obra/superpowers.git ~/.codex/superpowers
+
+# 2. 创建技能符号链接
+mkdir -p ~/.agents/skills
+ln -s ~/.codex/superpowers/skills ~/.agents/skills/superpowers
+
+# 3. 重启 Codex 会话
+```
+
+**验证安装**
+
+```
+help me plan this feature
+```
+
+Codex 应该触发 Superpowers 的 brainstorming 和 writing-plans 技能。
+
+---
+
+### 启用多代理功能（可选）
+
+Superpowers 的部分技能依赖多代理特性，在 `~/.codex/config.toml` 中添加：
+
+```toml
+[features]
+multi_agent = true
 ```
 
 ### 目录结构
 
-结合使用时，推荐的项目结构：
+结合使用时，Codex 项目推荐结构：
 
 ```
 项目目录/
@@ -130,9 +202,53 @@ opsx --version
 │       │   ├── specs/
 │       │   └── tasks.md
 │       └── archive/             # 已完成的变更
-├── .claude/                     # Claude Code 配置
-│   └── skills/                  # Superpowers 技能
+├── .codex/                      # Codex 配置
+│   ├── skills/                  # OpenSpec 技能
+│   └── AGENTS.md                # 全局指令（可选）
+├── ~/.agents/skills/superpowers # Superpowers 技能（符号链接）
 └── src/                         # 源代码
+```
+
+---
+
+### Codex 整合后的完整工作流
+
+当 OpenSpec 和 Superpowers 都安装好后，Codex 中的标准开发流程：
+
+```mermaid
+flowchart TD
+    A[用户提出需求] --> B["用 OpenSpec 提出变更<br/>/opsx:propose <功能名>"]
+    B --> C[Human + AI 对齐 specs]
+    C --> D[OpenSpec 生成 design.md + tasks.md]
+    D --> E["用 Superpowers 规划任务<br/>help me plan this feature"]
+    E --> F[Superpowers brainstorming 细化]
+    F --> G[Superpowers writing-plans 拆分任务]
+    G --> H[Superpowers TDD 执行]
+    H --> I[Superpowers code-review 审查]
+    I --> J["OpenSpec 归档变更<br/>/opsx:archive"]
+    J --> K[提交 PR / Merge]
+```
+
+**Codex 中的命令序列示例：**
+
+```
+# 1. 开启新功能规范流程
+/opsx:propose add-user-auth
+
+# 2. 等待 specs 对齐完成后，用 Superpowers 规划
+help me plan this feature using tasks.md
+
+# 3. 执行 TDD
+let's test-drive this implementation
+
+# 4. 代码审查
+review the auth module
+
+# 5. 完成分支
+finish this development branch
+
+# 6. 归档 OpenSpec 变更
+/opsx:archive
 ```
 
 ---
