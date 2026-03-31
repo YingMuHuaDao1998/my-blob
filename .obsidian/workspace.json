@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI-Agent/Skill开发完全指南.md",
+                "file": "Superpowers/Superpowers与OpenSpec结合使用指南.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Skill开发完全指南"
+              "title": "Superpowers与OpenSpec结合使用指南"
             }
           }
         ]
@@ -186,13 +186,13 @@
   },
   "active": "d8ed7a815cd6382e",
   "lastOpenFiles": [
+    "AI-Agent/Skill开发完全指南.md",
     "Superpowers/Superpowers与OpenSpec结合使用指南.md",
     "OnlyOffice/PythonSDK-获取文档位置ID.md",
     "LangChain/LangChain最佳实践.md",
     "LangChain/LangChain全链路实战指南.md",
     "LangChain/LangChain Agent项目结构指南.md",
     "Ai/框架/LangChain/未命名.md",
-    "AI-Agent/Skill开发完全指南.md",
     "OnlyOffice/OnlyOffice对接-外部文档标记识别方案.md",
     "智能营销系统/合同库模块需求文档.md",
     "OnlyOffice/images",

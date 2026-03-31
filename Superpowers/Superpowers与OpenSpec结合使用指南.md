@@ -236,13 +236,13 @@ graph TD
 ### 场景 1：新功能开发
 
 ```mermaid
-graph LR
-    A[/opsx:propose 新功能] --> B[对齐 specs]
+flowchart LR
+    A["/opsx:propose 新功能"] --> B[对齐 specs]
     B --> C[Superpowers brainstorming]
     C --> D[细化 tasks]
     D --> E[TDD 实现]
     E --> F[Code Review]
-    F --> G[/opsx:archive]
+    F --> G["/opsx:archive"]
 ```
 
 ### 场景 2：Bug 修复
