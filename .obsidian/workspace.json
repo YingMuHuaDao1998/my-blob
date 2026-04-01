@@ -186,6 +186,7 @@
   },
   "active": "d8ed7a815cd6382e",
   "lastOpenFiles": [
+    "OpenClaw-Skills/OpenSpec中文模板配置指南.md",
     "OpenClaw-Skills/ClawHub热门Skills盘点.md",
     "OpenClaw-Skills/images",
     "OpenClaw-Skills",
@@ -218,7 +219,6 @@
     "AI-Agent/diagrams/17-conditional-loading.excalidraw.md",
     "AI-Agent/diagrams/16-checklist.excalidraw.md",
     "AI-Agent/diagrams/15-custom-skill-system.excalidraw.md",
-    "AI-Agent/diagrams/14-codex-skill-structure.excalidraw.md",
     "AI-Agent/diagrams",
     "AI-Agent/generate_skill_guide.py",
     "DeerFlow/images",
