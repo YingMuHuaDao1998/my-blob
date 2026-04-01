@@ -546,6 +546,354 @@ flowchart LR
 
 ---
 
+## 结合使用案例补遗（三次搜索新增，2026-04-01）
+
+---
+
+### 案例十三：HashRocket 实测 — OpenSpec vs Spec Kit 安装体验对比
+
+**来源**：[HashRocket - OpenSpec vs Spec Kit](https://hashrocket.com/blog/posts/openspec-vs-spec-kit-choosing-the-right-ai-driven-development-workflow-for-your-team)
+
+**关键发现**：OpenSpec 安装后只向 Claude Code 添加 **3 个 AI 命令**，而 Spec Kit 生成了 8 个。对于想要轻量级规范的团队，OpenSpec 的侵入性更低。
+
+**OpenSpec 的目录结构（实测）**：
+
+```
+openspec/changes/remove-team-nav/
+├── specs/navigation/spec.md    ← 变更规格
+└── tasks.md                    ← 实现检查清单
+```
+
+安装时通过 `openspec init` 自动创建的 `AGENTS.md`，会提醒 AI 检查 consolidated specs，确保 AI 始终对齐最新规范。
+
+**两者适用场景总结**：
+
+| 团队结构 | 推荐工具 |
+|---------|---------|
+| 小团队、快速迭代 | OpenSpec（轻量、3 命令） |
+| 大团队、需要多层审批 | Spec Kit（8 命令、更多治理层） |
+| **混用** | OpenSpec 做规范层 + Superpowers 做执行层 |
+
+---
+
+### 案例十四：GitHub 官方博客 — Spec Kit 与 OpenSpec 的关系
+
+**来源**：[GitHub Blog - Spec-driven development with AI](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
+
+**核心信息**：GitHub 官方提到了 Spec Kit，并指出Spec Kit、OpenSpec、BMAD 并非互斥，而是代表 **SDD 的不同切入角度**。
+
+**重要预告**：GitHub 官方博客提到 spec-driven 开发实践可以和 **context engineering（上下文工程）** 结合，构建更高级的 AI 工具链能力。这意味着未来 OpenSpec/GSD 可能作为上下文层，与执行层工具（如 Superpowers）更深层次集成。
+
+---
+
+### 案例十五：Augment Code — AI SDD 的自动化验证机制
+
+**来源**：[Augment Code - AI Enhances Spec-Driven Development Workflows](https://www.augmentcode.com/guides/ai-spec-driven-development-workflows)
+
+**核心论点**：AI 增强 SDD 的关键在于把**规范变成可执行的契约**，而不是事后文档。
+
+**SDD 自动化验证架构**：
+
+```
+Spec（机器可读）
+    ↓ CI/CD 自动验证
+    ↓ 任务拆分（AI）
+    ↓ 代码生成（AI）
+    ↓ 漂移检测（AI）
+实现代码 ←→ 规范 持续对齐
+```
+
+Augment 的 Context Engine 能在 **40 万行代码**规模上维护规范上下文，实时检测实现是否偏离架构契约。这是目前 OpenSpec 和 Superpowers 都尚未覆盖的规模化场景。
+
+---
+
+### 案例十六：intent-driven.dev — OpenSpec 完整知识库与 Linear MCP 集成
+
+**来源**：[intent-driven.dev/knowledge/openspec](https://intent-driven.dev/knowledge/openspec/)
+
+**重点内容**：
+
+1. **OpenSpec 核心价值**：维护单一 unified specification 作为系统的唯一权威参考
+2. **Linear MCP + OpenSpec 工作流**：将 OpenSpec 的规范变更与 Linear（项目管理工具）自动关联，实现"规范审批 → 任务下发"的闭环
+3. **Spec-Anchored Alignment**：任何时间点都可以用当前权威规范验证实现是否符合预期
+
+**Linear MCP + OpenSpec 整合流程**：
+
+```
+/opsx:propose add-feature
+    ↓ Human 审批 proposal + specs
+    ↓ OpenSpec 生成 delta specs
+    ↓ Linear MCP 自动创建关联 Issue
+    ↓ Superpowers TDD 执行
+    ↓ /opsx:archive → Linear Issue 关闭
+```
+
+---
+
+### 案例十七：Superpowers for OpenCode — hooks 系统替代 AGENTS.md
+
+**来源**：[blog.fsck.com - Superpowers for OpenCode](https://blog.fsck.com/2025/11/24/Superpowers-for-OpenCode/)
+
+**关键差异**：OpenCode 不支持 AGENTS.md，但支持 **hooks**。Superpowers 利用 OpenCode 的 hooks 系统实现自动 bootstrap，无需人工配置。
+
+**安装方式**（在 OpenCode 中）：
+
+```
+opencode
+> Install Superpowers for OpenCode
+```
+
+Superpowers 自动通过 hooks 设置 Session 启动时的技能激活，无需手动编辑 AGENTS.md。关键在于 `use_skill` 工具——这是 OpenCode 的原生技能调用接口。
+
+**测试标准**：Jesse Vincent（Superpowers 作者）对 OpenCode 版的测试标准：开一个全新会话、不给任何前言，直接让 AI 做一件它被训练过的事，100% 通过才算成功。
+
+---
+
+### 案例十八：YouTube — Superpowers + OpenCode 完整教程
+
+**来源**：[YouTube - Superpowers + OpenCode: AI Coding Workflow is 100X Better Than ...](https://www.youtube.com/watch?v=JOKWQBfnY8A)
+
+**内容概述**：完整展示了 Superpowers 在 OpenCode 中的安装和完整工作流，覆盖从 brainstorming 到 PR 生成的每一步。对比了在 OpenCode 中使用和不使用 Superpowers 的效率差异。
+
+---
+
+### 案例十九：GitHub 独立 Skill 仓库 — openspec-proposal / apply / archive 三件套
+
+**来源**：[GitHub - chyiiiiiiiiiiii/openspec-skills](https://github.com/chyiiiiiiiiiiii/openspec-skills)
+
+**重大发现**：有开发者将 OpenSpec 的三个核心步骤（提案、实施、归档）拆成独立 Skill，可直接安装到 Claude Code：
+
+```bash
+# 安装方式
+git clone https://github.com/chyiiiiiiiiiiii/openspec-skills.git
+cp -r openspec-proposal openspec-apply openspec-archive ~/.claude/skills/
+```
+
+**目录结构**：
+
+```
+openspec-skills/
+├── openspec-proposal/SKILL.md   ← 创建提案
+├── openspec-apply/SKILL.md      ← 执行实施
+├── openspec-archive/SKILL.md    ← 归档变更
+└── templates/
+    ├── AGENTS.md                ← AI 指令模板
+    ├── project.md               ← 项目信息模板
+    └── README.md                 ← 使用教程
+```
+
+**安装注意点**：必须安装到 `~/.claude/skills/openspec-proposal/`（不能嵌套），否则 Claude Code 无法识别。
+
+---
+
+### 案例二十：Net Ninja Spec-Driven Workflow #4 — 实施计划的具体步骤
+
+**来源**：[YouTube - Spec Driven Workflow with Claude Code #4](https://www.youtube.com/watch?v=BdDuVOfE0eQ)
+
+**内容概述**：系列第四期，手把手演示如何把 OpenSpec 的 `tasks.md` 转化为具体的代码实现计划。包含：
+
+- 如何从 spec.md 提取关键接口定义
+- 如何将 tasks.md 的检查清单转成可执行代码步骤
+- 如何在 Claude Code 中保持对 design.md 的持续引用
+
+---
+
+### 案例二十一：OpenSpec 与 BMAD 的互补关系
+
+**来源**（综合多个来源整理）：
+
+**SDD 框架生态图谱**：
+
+```
+SDD（规范驱动开发）
+├── BMAD        → 敏捷冲刺式 AI 驱动开发
+├── Spec Kit    → GitHub 官方，多命令治理
+├── OpenSpec    → 轻量 delta specs，变更追溯
+├── Superpowers → TDD + 子代理，个体执行质量
+└── GSD         → 全员 AI，宏观流程治理
+```
+
+**OpenSpec + Superpowers 的定位**：OpenSpec 的 delta spec 管理解决了"改什么"，Superpowers 的 TDD + subagent 解决了"怎么改得对"。两者组合覆盖了 SDD 的**决策层 + 执行层**。
+
+**官方组合进度（Issue #780）**：OpenSpec 团队已在讨论将 OpenSpec 做成 Superpowers marketplace 中的一个技能分组，届时安装体验将是一键式集成。
+
+---
+
+### 案例二十二：Dev.to 实战 — 用 OpenSpec 从零构建真实项目
+
+**来源**：[Dev.to - Part 1: Spec-Driven Development](https://dev.to/koustubh/part-1-spec-driven-development-building-predictable-ai-assisted-software-19ne)
+
+**项目背景**：作者用 SDD 方式构建了一个追踪墨尔本火车通勤者出勤率的个人项目 **Station Station**。
+
+**核心经验**：
+
+> 传统 AI 对话是试错循环：给模糊提示 → 生成代码 → 测试 → 发现不对 → 重新开始
+> SDD 方式：结构化 spec（含需求、用户故事、验收标准）→ AI 直接生成可用代码
+
+**结论**：
+
+> SDD 不是把需求扔给 AI 然后走开让它自己构建
+> 它的本质是：让 AI 的每一次输出都基于明确的规范，减少随机性，提升可预测性
+
+
+
+### 案例六：CSDN 三工具组合方案
+
+**来源**：[GitCode - AI协同开发实战详解](https://gitcode.csdn.net/69c906860a2f6a37c59b56f9.html)
+
+**核心观点**：该文提出 **Claude Code + OpenSpec + Superpowers 三工具串联**的完整方案，分别解决：
+
+| 工具 | 解决的问题 |
+|------|-----------|
+| **Claude Code** | 主力编码执行 |
+| **OpenSpec** | 需求对齐 + 规范追溯 |
+| **Superpowers** | TDD 强制 + 子代理分工 |
+
+**典型流程**：
+
+```
+OpenSpec: /opsx:propose → 生成 proposal/design/tasks
+    ↓
+Superpowers: 读取 tasks.md → brainstorm 细化 → TDD 执行
+    ↓
+Claude Code: 作为底层 Agent 执行具体代码任务
+    ↓
+OpenSpec: /opsx:archive 归档
+```
+
+---
+
+### 案例七：知乎深度对比 — "个体效率 vs 团队一致性"
+
+**来源**：[知乎 - 开源AI编程工具对决：Superpowers技能库与OpenSpec规范驱动](https://zhuanlan.zhihu.com/p/1996547743792006127)
+
+**核心论点**：
+
+> Superpowers 解决"**会不会做**"的问题，但没有强约束"**怎么做才一致**"。
+> OpenSpec 解决"**做什么**"的问题，强制"先想清楚再动手"。
+
+**两者结合的最终判断**：
+
+```
+用 Superpowers 在"创新平原"上快速开拓和试错
+用 OpenSpec 在"复杂城池"中建立秩序、保障传承
+最高效的现代开发者 = 能切换两种模式的"双语者"
+```
+
+**该文还指出了两者各自的致命局限**：
+
+- **Superpowers 局限**：技能是孤立的，无法系统性解决跨会话的"上下文丢失"。复杂任务来回十几次后，AI 可能偏离最初的核心约束。
+- **OpenSpec 局限**：前期编写详尽 Spec 本身就需要不菲精力，对于快速变化的需求或探索性项目是负担。
+
+---
+
+### 案例八：博客园 SDD 双框架解析
+
+**来源**：[博客园 - SDD基于规范编程-OpenSpec及SuperPowers](https://www.cnblogs.com/kybs0/p/19770771)
+
+**最清晰的对比框架**，摘录核心：
+
+| | OpenSpec | Superpowers |
+|--|---------|-------------|
+| **哲学** | Proposal → Design → **Spec** → Tasks | Brainstorm → Plan → **TDD + Subagent** → Review |
+| **核心机制** | artifact 链 + spec 管理，保证设计可查 | 子代理 + TDD + Review，保证代码正确 |
+| **适用场景** | 大型企业项目改动，spec 追溯 + 变更归档 | 从 0 开始构建项目 |
+
+**最佳实践总结**：
+
+> 用 OpenSpec 做 spec 管理和变更追溯
+> 从 Superpowers 中提取审查和 worktree 能力增强执行质量
+> **规范编程的终极目标只有一个——让 AI 写的每一行代码，都有据可查、有规可循。**
+
+---
+
+### 案例九：spec-gen — 从代码反向生成 OpenSpec Spec
+
+**来源**：[GitHub Discussion #634](https://github.com/Fission-AI/OpenSpec/discussions/634)
+
+**工具介绍**：spec-gen 是一个开源 CLI 工具，**从已有代码库自动逆向生成 OpenSpec 兼容的规格文档**。
+
+**使用场景**：
+
+```bash
+# 在已有项目上快速建立 OpenSpec 规范层
+spec-gen ./src --output ./openspec/specs
+
+# 扫描现有代码，生成对应的 spec.md
+spec-gen scan ./src/auth --spec auth-spec
+```
+
+**与两框架的联动价值**：
+
+```
+已有代码库 → spec-gen 逆向生成 specs
+    ↓
+OpenSpec: 用生成的 specs 作为基准，规范新增变更
+    ↓
+Superpowers: 用规范好的 tasks 执行 TDD
+```
+
+这解决了 OpenSpec 最大的痛点：**brownfield 项目难以从零建立规范**。
+
+---
+
+### 案例十：YouTube 讨论 — "如何搭配使用规范（OpenSpec）和流程（Superpowers）"
+
+**来源**：[YouTube - 限制AI自由|AI编程的正确姿势|Superpowers|gstack|OpenSpec](https://www.youtube.com/watch?v=0lymn_y82Tc)
+
+**核心问题**（来自观众提问）：
+
+> 如何搭配使用规范（OpenSpec）和流程（Superpowers）？概念上可行，工程落地细节和工具支持不知道有没有尝试过？
+
+该视频讨论了 OpenSpec 作为"规范层"、Superpowers 作为"执行层"的理论可行性，但指出**工程落地需要两个工具的 skill 深度集成**，目前仍在探索阶段。
+
+---
+
+### 案例十一：Net Ninja — Spec-Driven Workflow with Claude Code 系列
+
+**来源**：[Net Ninja YouTube - Spec Driven Workflow with Claude Code #1](https://www.youtube.com/watch?v=e_D9M_MJ9Hs)
+
+**系列内容**：制作了完整教学视频，手把手实现：
+
+1. 如何在 Claude Code 中实现 `/spec` 命令
+2. 如何让 OpenAPI spec 成为 source of truth
+3. 如何用 `openspec apply` 传播规范变更到代码
+4. 如何用 `openspec ff` 快速穿过已完成的 task
+
+**实用技巧摘录**：
+
+```bash
+# 规范变更前先 lint
+npx @stoplight/spectral-cli lint openapi.yaml
+
+# 用 openspec ff 跳过已验证的 tasks
+openspec ff <change-id>
+
+# 用 openspec explore 自然语言导航规范
+openspec explore "How does auth work?"
+```
+
+---
+
+### 案例十二：OpenSpec Apply — Claude Code Skill for Spec-Driven Coding
+
+**来源**：[MCP Market - OpenSpec Apply](https://mcpmarket.com/tools/skills/openspec-apply)
+
+**技能定位**：专门为 **OpenSpec → Code 实现**这一环节设计的 Claude Code Skill。
+
+**核心功能**：
+- 自动读取 OpenSpec change 的 context（proposal、design、tasks）
+- 自动化任务执行循环：读 context → 执行代码变更 → 更新 task 状态
+- 保持 AI 全程对 design 和 proposal 的上下文感知
+
+**使用方式**：
+
+```bash
+npx skillfish add jasony199/jason-claude-plugins openspec-apply
+```
+
+---
+
 ## 参考资料
 
 - [OpenSpec GitHub](https://github.com/Fission-AI/OpenSpec)
@@ -561,5 +909,7 @@ flowchart LR
 
 ## 更新日志
 
+- **2026-04-01 二次搜索**：补充 10 个新案例 — HashRocket 实测对比、GitHub 官方博客、Augment Code 自动化验证、intent-driven 知识库、Superpowers for OpenCode、YouTube 完整教程、GitHub 独立 Skill 仓库（三件套）、Net Ninja #4、SDD 生态图谱、Dev.to 实战项目
+- **2026-04-01**：补充 7 个新案例 — CSDN 三工具方案、知乎对比分析、博客园 SDD 框架解析、spec-gen 逆向生成工具、YouTube 讨论系列、Net Ninja 教学视频、OpenSpec Apply Skill
 - **2026-03-31**：添加实际组合使用案例 — Issue #859 官方讨论、Builder.io 工作流、st0012 Ruby 项目、Issue #780 技能分发提案、Rick Hightower 框架对比定位
 - **2026-03-31**：初始版本，整合 Superpowers 与 OpenSpec 结合使用技巧
