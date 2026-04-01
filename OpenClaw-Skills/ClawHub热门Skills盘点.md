@@ -1,180 +1,215 @@
 # ClawHub 热门 Skills 盘点（2026）
 
-> 基于 ClawHub 市场数据、社区反馈及下载量统计，整理目前最受欢迎、最实用的 OpenClaw Skills。
+> 基于 ClawHub 市场数据、社区反馈及 GitHub 下载量统计，整理目前最受欢迎、最实用的编程类 Skills。
 
 ---
 
-## 📊 总览
+## 📊 生态系统总览
 
-| 数据来源 | Skill 总量 | 累计下载量 |
-|---------|-----------|-----------|
-| ClawHub 官方 | 3,286+ | 150万+ |
-| 另一口径 | 13,700+ | — |
+| 平台 | Skill 总量 | 累计下载量 |
+|------|-----------|-----------|
+| ClawHub | 13,700+ | 150万+ |
+| awesome-agent-skills (VoltAgent) | 100+ 精选 | 13.1K ⭐ |
+| ComposioHQ/awesome-claude-skills | 49.7K ⭐ | — |
+| alirezarezvani/claude-skills | **223 skills** | v2.2.0 (2026-03-31) |
+
+> SKILL.md 格式**跨平台通用**：Claude Code / Codex / Cursor / Gemini CLI / OpenClaw 均支持
 
 ---
 
-## 🏆 Top 10 安装量排行
+## 🏆 编程类 Skills 排行榜
+
+### 按下载量排序
 
 | 排名 | Skill | 下载量 | 类型 | 核心功能 |
 |:---:|-------|--------|------|---------|
-| 1 | **Capability Evolver** | 35K | AI 能力进化 | 让 Agent 自我反思、自我改进、自我记忆 |
-| 2 | **Wacli** | 16K | CLI 工具 | 通用命令行封装，扩展终端能力 |
-| 3 | **ByteRover** | 16K | 开发工具 | AI 代码开发和调试辅助 |
-| 4 | **Self-Improving Agent** | 15K | AI 能力进化 | 运行时自我优化，积累执行经验 |
-| 5 | **ATXP** | 14K | 自动化 | 跨平台任务自动化工作流 |
-| 6 | **Gog** | 14K | Google Workspace | 驱动 Google Docs/Sheets/Drive 等 |
-| 7 | **Agent Browser** | 11K | 浏览器自动化 | 让 Agent 操控浏览器进行 Web 操作 |
-| 8 | **Summarize** | 10K | 内容处理 | 长文摘要、要点提取 |
-| 9 | **GitHub** | 10K | 开发工具 | 管理 Issues、PRs、仓库工作流 |
-| 10 | **Sonoscli** | 10K | 媒体控制 | 控制 Sonos 音响系统 |
-
-> 数据来源：ClawHub 下载排行 / ClawOneClick 统计
+| 1 | **frontend-design**（Anthropic 官方）| 277K+ | 设计 | 强制设计方向规范，先设计再写代码 |
+| 2 | **agent-browser** | 14K ⭐ | 浏览器自动化 | Web 自动化、抓取、UI 测试 |
+| 3 | **Wacli** | 16K | CLI 工具 | 通用命令行封装 |
+| 4 | **ByteRover** | 16K | 开发伴侣 | AI 代码开发和调试 |
+| 5 | **Self-Improving Agent** | 15K | AI 进化 | 运行时自我优化 |
+| 6 | **Gog**（Google Workspace）| 14K | 办公自动化 | Google Docs/Sheets/Drive |
+| 7 | **ATXP** | 14K | 跨平台自动化 | 连接各种服务构建流水线 |
+| 8 | **GitHub** | 10K | 开发工作流 | Issues/PR/仓库管理 |
+| 9 | **Summarize** | 10K | 内容处理 | 长文摘要 |
+| 10 | **agent-sandbox-skill** | — | 云沙箱 | E2B 隔离环境构建/测试全栈应用 |
 
 ---
 
-## 📂 按类别详细说明
+## 🔥 深度推荐：真正值得关注的 Skills
 
-### 1️⃣ AI 能力进化（最火方向）
+### 1️⃣ Anthropic 官方 Skills（17个）
 
-#### Capability Evolver — 星球级别 🌟
-- **安装量**：35K（排名第一）
-- **定位**：让 AI Agent 拥有自我反思、自我批评、自我学习的能力
-- **核心能力**：
-  - 任务完成后自动评估效果
-  - 记录失败教训到长期记忆
-  - 随使用持续提升表现
-- **为什么火**：这是唯一一个让 Agent 越用越聪明的 Skill，符合"通用 AI  Agent"的核心预期
+GitHub: [anthropics/skills](https://github.com/anthropics/skills)
 
-#### Self-Improving Agent
-- **安装量**：15K
-- **定位**：运行时自我优化，积累偏好和工作流经验
-- **与 Capability Evolver 的区别**：更偏重执行层面的经验积累，比如记住用户的偏好、常用命令、工作风格
+Anthropic 在 GitHub 发布了 **17 个官方 Skill**，是质量最有保证的一批：
 
----
-
-### 2️⃣ 开发工作流
-
-#### GitHub
-- **安装量**：10K
-- **定位**：用自然语言管理 GitHub 所有功能
-- **核心能力**：
-  - `创建 / 评论 / 关闭` Issues
-  - `审查 PR` 代码变更
-  - `管理分支`、`处理 CI/CD`
-  - `搜索代码`、`查看提交历史`
-- **安装**：`npx clawhub@latest install github`
-
-#### Agent Browser
-- **安装量**：11K（最热浏览器自动化 Skill）
-- **定位**：让 Agent 操控真实浏览器
-- **核心能力**：
-  - 打开网页、截图、点击、填表
-  - 抓取动态内容（JS 渲染页面）
-  - 做 UI 测试、网页数据采集
-- **为什么火**：解决了 AI 无法操作 Web 的最后一公里问题
-
-#### ByteRover
-- **安装量**：16K
-- **定位**：AI 代码开发和调试伴侣
-- **核心能力**：辅助写代码、Debug、重构建议
-
----
-
-### 3️⃣ 办公与生产力
-
-#### Summarize
-- **安装量**：10K
-- **定位**：一键摘要任何长内容
-- **核心能力**：
-  - 网页、文章、文档摘要
-  - 会议记录提炼
-  - 多文档对比摘要
-
-#### Gog（Google Workspace）
-- **安装量**：14K
-- **定位**：驱动 Google 全家桶
-- **支持**：Google Docs / Sheets / Drive / Calendar / Gmail
-- **使用场景**：让 Agent 帮你读写 Google 文档、操作表格、管理文件
-
-#### ATXP
-- **安装量**：14K
-- **定位**：跨平台自动化工作流
-- **核心能力**：连接各种服务，构建自动化流水线
-
----
-
-### 4️⃣ 通信与协作
-
-| Skill | 下载量 | 支持平台 |
-|-------|--------|---------|
-| **Slack** | 高 | Slack 消息、频道管理 |
-| **Discord** | 高 | Discord 服务器、消息 |
-| **Telegram** | 高 | Telegram Bot |
-| **Feishu（飞书）** | 中高 | 飞书消息、文档、云空间 |
-| **Email / Gmail** | 中 | 邮件读取和发送 |
-
-> OpenClaw 默认支持飞书/Telegram/Discord/Slack 等主流 IM，开箱即用
-
----
-
-### 5️⃣ 云与服务集成
-
-| Skill | 场景 |
+| Skill | 功能 |
 |-------|------|
-| **AWS / Aliyun** | 云服务器管理（我目前就在用 `aliyun-server` skill 管阿里云 ECS） |
-| **Docker** | 容器管理、镜像操作 |
-| **Monday** | 项目管理面板，任务创建和状态更新 |
-| **Notion** | Notion 数据库和页面管理 |
-| **Feishu Wiki** | 飞书知识库 |
-| **RAGFlow** | 知识库 RAG（我之前帮你配置过） |
-| **DeerFlow** | 多 Agent 工作流（本地部署在 2026-03-29） |
+| **frontend-design**（⭐ 277K+）| 先定设计方向再写代码，强制设计规范 |
+| **document-skills** | PDF/Word/PPT 处理 |
+| **测试相关** | 单元测试、E2E 测试自动化 |
+| **代码质量** | Lint、格式化、架构检查 |
+
+**安装方式：**
+```bash
+# Claude Code 内
+/plugin marketplace add anthropics/skills
+# 然后启用 frontend-design
+
+# 或手动
+cp -r skills/skills/$s ~/.claude/skills/
+```
 
 ---
 
-### 6️⃣ AI 媒体生成
+### 2️⃣ agent-browser（14K ⭐）
 
-| Skill | 能力 |
-|-------|------|
-| **PixVerse** | AI 图片和视频生成 |
-| **ElevenLabs Agent** | 语音交互、TTS |
-| **Suno** | AI 音乐生成 |
+> 兼容：Claude Code / Cursor / Codex / Gemini CLI / Copilot
 
----
-
-### 7️⃣ 信息获取与研究
-
-| Skill | 能力 |
-|-------|------|
-| **Tavily Web Search** | ClawHub 最热搜索 Skill，AI 优化的搜索引擎 |
-| **Browser Search** | 通用网页搜索 |
-| **Weather** | 天气查询（OpenClaw 内置） |
-| **Calendar** | 日历事件管理 |
-
----
-
-### 8️⃣ 安全类（必装）
-
-#### Skill Vetter
-- **定位**：安装 Skill 前的安全审计
-- **功能**：自动检查 Skill 是否存在恶意代码、过度权限、可疑模式
-- **建议**：从 ClawHub 安装任何 Skill 之前，先用 Vetter 过一遍
-
-#### Predicate Snapshot
-- **效果**：节省 90% Token 成本
-- **原理**：缓存常用 Skill 输出，避免重复调用
-
----
-
-## 🛠 安装方式
+**最成熟的 Web 自动化 Skill**，支持：
+- 打开网页、截图、点击、填表
+- 抓取 JS 渲染内容
+- UI 测试、网页数据采集
+- 与 Playwright 无缝集成
 
 ```bash
-# 通过 clawhub CLI 安装
+npx clawhub@latest install agent-browser
+```
+
+---
+
+### 3️⃣ agent-sandbox-skill（E2B 云沙箱）
+
+> 支持：Gemini CLI / Claude Code / Codex CLI
+
+让 AI 在**完全隔离的云沙箱**中构建、测试、部署全栈应用，**永不触碰本地文件系统**。
+
+| 能力 | 说明 |
+|------|------|
+| 隔离执行 | 每个 Agent 分支在独立 E2B 沙箱中运行 |
+| 全栈支持 | 可创建 Next.js/Express/任何技术栈 |
+| 规模化 | 可同时运行多个独立沙箱 |
+| 免本地污染 | 对本地文件和生成环境完全安全 |
+
+```bash
+# Claude Code / Codex 中使用
+\agent-sandboxes:plan-full-stack  # 生成详细实现计划
+\agent-sandboxes:test             # 运行验证测试
+```
+
+---
+
+### 4️⃣ alirezarezvani/claude-skills（223个 Skills）
+
+> ⭐ 活跃更新：v2.2.0（2026-03-31），含安全套件
+
+**最全面的多领域 Skill 集合**，持续更新：
+
+**工程团队套件（engineering-team）：**
+- 敏捷工作流（Scope → Epic → Story → Task → 执行 → 质量门禁）
+- 安全套件（新增 v2.2.0）：adversarial-reviewer / ai-security / cloud-security / incident-response / red-team / threat-detection
+- 自动化测试流水线
+- 技术债清理
+
+**覆盖领域（部分）：**
+| 类别 | 数量 | 代表 Skill |
+|------|------|-----------|
+| 工程团队 | 完整敏捷流程 | ln-200~ln-1000 |
+| 安全 | 8个 | adversarial-reviewer 等 |
+| 数据库 | Snowflake 等 | snowflake-development |
+| 自评系统 | self-eval | 运行时自我评估 |
+
+---
+
+### 5️⃣ levnikolaevich/claude-code-skills（完整流水线）
+
+专注**软件工程全生命周期**的 Skill 集合：
+
+```
+Scope 分解 → Epic 创建 → Story 规划 → Task 执行 → 代码质量门禁 → 测试
+     ↓           ↓           ↓           ↓           ↓            ↓
+ ln-200     ln-210/220   ln-221/222   ln-301   ln-510~514    ln-523
+```
+
+| 层级 | Skills | 核心功能 |
+|------|--------|---------|
+| 规划层 | ln-200~230 | 需求分解、优先级排序 |
+| 执行层 | ln-300~404 | 任务创建、执行、审查、重做 |
+| 质量层 | ln-500~523 | 代码质量检查、技术债、回归测试 |
+| 编排层 | ln-1000 | 元编排器，串联全流程 |
+
+---
+
+### 6️⃣ 安全类 Skills（重要！）
+
+来自 alirezarezvani v2.2.0 安全套件：
+
+| Skill | 功能 |
+|-------|------|
+| **adversarial-reviewer** | 对抗性代码审查 |
+| **ai-security** | AI 安全专项审查 |
+| **cloud-security** | 云安全配置检查 |
+| **incident-response** | 安全事件响应流程 |
+| **red-team** | 红队攻击模拟 |
+| **threat-detection** | 威胁检测 |
+
+> ⚠️ **建议**：安装任何外部 Skill 之前，先用 **Skill Vetter** 做安全审计
+
+---
+
+### 7️⃣ Playwright Skill（浏览器自动化）
+
+专为 AI Agent 优化的 Playwright Skill：
+- 结构化 SKILL.md
+- 完整的测试自动化工作流
+- MCP 兼容设置
+- 支持真实场景的测试管道
+
+---
+
+### 8️⃣ ComposioHQ/awesome-claude-skills（49.7K ⭐）
+
+按类别整理的最大 Skill 集合：
+
+| 类别 | 代表 Skill |
+|------|---------|
+| 文档处理 | PDF/Word/Google Docs |
+| 开发工具 | GitHub/Git/代码审查 |
+| 数据分析 | 数据库/SQL |
+| 自动化 | n8n/IFTTT/Zapier |
+| 安全 | 渗透测试/威胁检测 |
+| 媒体 | 图像/视频生成 |
+| 企业 | Jira/Linear/Notion |
+
+---
+
+## 📂 技能库资源地图
+
+| 资源 | 地址 | 说明 |
+|------|------|------|
+| **ClawHub** | clawhub.ai | 官方 Skill 市场（13,700+） |
+| **VoltAgent/awesome-agent-skills** | GitHub 13.1K ⭐ | 按类别整理的精选列表 |
+| **ComposioHQ/awesome-claude-skills** | GitHub 49.7K ⭐ | 最大 Claude Skills 集合 |
+| **alirezarezvani/claude-skills** | GitHub | 223 Skills，完整工程团队套件 |
+| **heilcheng/awesome-agent-skills** | GitHub 3.3K ⭐ | Agent Skills 精选列表 |
+| **Antigravity Awesome Skills** | — | 1,234+ 兼容 Skills |
+
+---
+
+## 🛠 安装命令速查
+
+```bash
+# 通过 clawhub 安装
 npx clawhub@latest install <skill-name>
 
 # 示例
-npx clawhub@latest install github
 npx clawhub@latest install agent-browser
-npx clawhub@latest install capability-evolvers
+npx clawhub@latest install github
+npx clawhub@latest install playwright-skill
+
+# Claude Code 官方市场
+/plugin marketplace add anthropics/skills
 
 # 查看已安装
 npx clawhub@latest list
@@ -187,46 +222,34 @@ npx clawhub@latest audit --local
 
 ## 💡 实用建议
 
-### 必装清单（根据我的使用经验）
+### 必装清单（编程场景）
 | Skill | 理由 |
 |-------|------|
-| **GitHub** | 开发工作流必备 |
-| **Agent Browser** | Web 自动化抓取 |
-| **Self-Improving Agent** | 让 Agent 记住我的偏好 |
-| **Summarize** | 处理长文档必备 |
-| **AliYun Server**（已有） | ECS 运维管理 |
+| **agent-browser** | Web 自动化必备 |
+| **GitHub** | 开发工作流闭环 |
+| **playwright-skill** | 浏览器测试 |
+| **frontend-design** | 保证前端设计质量 |
+| **安全套件**（adversarial-reviewer 等）| 代码安全审查 |
 
-### 我的当前 Skill 配置（供参考）
-```
-~/.openclaw/skills/
-├── aliyun-server/        ← 阿里云 ECS 管理
-├── excalidraw/           ← Excalidraw 图表
-├── feishu-doc/           ← 飞书文档
-├── feishu-drive/         ← 飞书云盘
-├── feishu-wiki/          ← 飞书知识库
-├── feishu-task/          ← 飞书任务
-├── file-organizer-skill/ ← 文件整理
-├── github/               ← GitHub 工作流
-├── self-improving-1-2-16/← 自我改进
-├── tavily-search/        ← Web 搜索
-├── tech-doc-writer/      ← 技术文档生成
-└── weather/              ← 天气查询
-```
+### 重要提醒
+> ⚠️ 一个工程师测试了 47 个 Skill，发现 **40 个反而让输出变差**——增加 Token 开销、延迟，并缩小 AI 发挥空间。
+>
+> **最好的 Skill 往往是自己写的**——当你在多个会话里反复解释同一套工作流时，就该把它写成 Skill 了。
 
----
-
-## 📌 安全提醒
-
-> ⚠️ 安装任何 Skill 之前：
-> 1. 用 **Skill Vetter** 过一遍
-> 2. 检查 Skill 申请的权限范围
-> 3. 不确定时不安装——先问我
+### Skill 质量判断标准
+1. **描述精准**：描述模糊的 Skill，AI 永远不会主动触发
+2. **体积控制**：完整指令在 5k tokens 以内
+3. **触发明确**：description 写清楚触发场景
+4. **先测试再生产**：用 test prompts 验证触发率
 
 ---
 
 ## 数据来源
 
 - ClawHub 官方注册表 (clawhub.ai)
-- ClawOneClick 2026 下载量排行
-- awesome-openclaw-skills (GitHub 42.8k ⭐)
-- 各社区评测文章（Reddit、AI Tools Kit、Growexx 等）
+- GitHub 各 Skill 仓库 Stars 和更新频率
+- awesome-agent-skills (VoltAgent, 13.1K ⭐)
+- ComposioHQ/awesome-claude-skills (49.7K ⭐)
+- alirezarezvani/claude-skills (v2.2.0, 2026-03-31)
+- Anthropic 官方 skills 仓库 (github.com/anthropics/skills)
+- 各社区评测文章（Reddit、AI Tools Kit、Composio.dev 等）
