@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "FastAPI入门指南：从小白到跑通第一个真实项目.md",
-                "mode": "source",
+                "file": "AgentFramework/Agent构建核心方法对比：LangChain_LangGraph_DeepAgents.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "FastAPI入门指南：从小白到跑通第一个真实项目"
+              "title": "Agent构建核心方法对比：LangChain_LangGraph_DeepAgents"
             }
           }
         ]
@@ -186,14 +186,24 @@
   },
   "active": "d8ed7a815cd6382e",
   "lastOpenFiles": [
+    "LangChain/LangChain生态三件套使用指南.md",
+    "Superpowers/Git-Worktree与Superpowers-Skill总结.md",
+    "FastAPI-LangChain-LangGraph/FastAPI-LangChain-LangGraph-QuickStart.md",
+    "FastAPI-LangChain-LangGraph",
+    "AgentFramework/构建支持Skill的多智能体系统.md",
+    "AgentFramework/Agent构建核心方法对比：LangChain_LangGraph_DeepAgents.md",
+    "FastAPI入门指南：从小白到跑通第一个真实项目.md",
+    "README.md",
+    "未命名.base",
     "OpenClaw-Skills/OpenSpec中文模板配置指南.md",
+    "AgentFramework/images",
+    "AgentFramework",
     "OpenClaw-Skills/ClawHub热门Skills盘点.md",
     "OpenClaw-Skills/images",
     "OpenClaw-Skills",
     "智能体/智能体搭建方案前沿理念.md",
     "智能营销系统/合同库模块需求文档.md",
     "智能营销系统/合同库产品需求文档(PRD).md",
-    "FastAPI入门指南：从小白到跑通第一个真实项目.md",
     "AI-Agent/AI Agent开发实践指南：经典范式与实例.md",
     "Superpowers/OpenSpec定制化配置指南：中文Spec与自定义模板.md",
     "Superpowers/Superpowers与OpenSpec结合使用指南.md",
@@ -211,17 +221,7 @@
     "Ai/框架/LangChain/未命名.md",
     "OnlyOffice/OnlyOffice对接-外部文档标记识别方案.md",
     "OnlyOffice/images",
-    "OnlyOffice",
     "AI-Agent/diagrams/03-design-principles.excalidraw.md",
-    "AI-Agent/diagrams/02-skill-vs-prompt-vs-tool.excalidraw.md",
-    "AI-Agent/diagrams/01-skill-overview.excalidraw.md",
-    "AI-Agent/diagrams/18-script-composition.excalidraw.md",
-    "AI-Agent/diagrams/17-conditional-loading.excalidraw.md",
-    "AI-Agent/diagrams/16-checklist.excalidraw.md",
-    "AI-Agent/diagrams/15-custom-skill-system.excalidraw.md",
-    "AI-Agent/diagrams",
-    "AI-Agent/generate_skill_guide.py",
-    "DeerFlow/images",
     "未命名.canvas",
     "未命名 1.canvas"
   ]
