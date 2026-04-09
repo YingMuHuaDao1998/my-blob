@@ -326,7 +326,7 @@ result2 = agent.invoke({"messages": [user_msg2]})
 ```python
 # 客户端传 thread_id → Server 知道操作哪个会话
 # → Checkpointer 找到对应的持久化存储
-# → 状态读写都针对这个 thread
+# → ![[2026-04-08-aixbidder-filling-process-build-design]] thread
 
 # 不同的 thread_id = 完全独立的对话历史
 # alice 的 thread 和 bob 的 thread 互不干扰
