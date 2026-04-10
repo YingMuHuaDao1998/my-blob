@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LangChain/LangGraph-Agent-Server-从零实现-Threads持久化.md",
+                "file": "招投标智能体/2026-04-08-aixbidder-filling-process-build-design.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LangGraph-Agent-Server-从零实现-Threads持久化"
+              "title": "2026-04-08-aixbidder-filling-process-build-design"
             }
           }
         ]
@@ -186,6 +186,11 @@
   },
   "active": "2da7e322cd0646cb",
   "lastOpenFiles": [
+    "MarkItDown/MarkItDown使用指南.md",
+    "MarkItDown/images",
+    "MarkItDown",
+    "LangChain/LangGraph-Agent-Server-从零实现-Threads持久化.md",
+    "招投标智能体/2026-04-08-aixbidder-filling.textClipping",
     "招投标智能体/2026-04-08-aixbidder-filling-process-build-design.md",
     "2026-04-08-aixbidder-filling-process-build-design.md",
     "FastAPI-LangChain-LangGraph/FastAPI-LangChain-LangGraph-QuickStart.md",
@@ -194,7 +199,6 @@
     "AI-Agent/AI Agent开发实践指南：经典范式与实例.md",
     "招投标智能体/LangGraph实现方案.md",
     "招投标智能体/标书管理PRD.md",
-    "LangChain/LangGraph-Agent-Server-从零实现-Threads持久化.md",
     "LangChain/LangSmith-Threads使用指南.md",
     "Superpowers/brainstorming-Spec模板规范.md",
     "招投标智能体/完整PRD.md",
@@ -214,15 +218,11 @@
     "Excalidraw/Drawing 2026-04-07 22.34.53.excalidraw.md",
     "Excalidraw/Drawing 2026-04-07 22.35.02.excalidraw.md",
     "Excalidraw",
-    "LangChain/LangChain全链路实战指南.md",
     "招投标智能体",
     "LLMDev/images",
     "LLMDev",
     "LangGraph/images",
     "LangGraph",
-    "FastAPI-LangChain-LangGraph",
-    "AgentFramework/images",
-    "AgentFramework",
     "未命名 1.canvas"
   ]
 }
