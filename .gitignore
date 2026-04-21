@@ -1,15 +1,9 @@
 # =============================================
-# my-blob 只跟踪 wiki/topics/（博客原文）
-# 其他全部 ignore
+# 只跟踪主题目录下的博客原文
 # =============================================
 
 # AI Wiki 生成层（不跟踪）
-wiki/sources
-wiki/concepts
-wiki/entities
-wiki/syntheses
-wiki/index.md
-wiki/log.md
+wiki/
 
 # 原始资料收件箱（不跟踪）
 raw/
@@ -17,24 +11,72 @@ raw/
 # 统一媒体资源（不跟踪）
 assets/
 
-# Agent Skills 配置（不跟踪）
+# Agent Skills（不跟踪）
 .claude/
 
 # Obsidian 本地配置（不跟踪）
 .obsidian/
 
-# 根目录配置文件
-.DS_Store
-
-# =============================================
-# 核心规则：忽略所有，其他例外
-# =============================================
+# 忽略所有
 *
 
-# 例外：唯独追踪 wiki/topics/
-!wiki/
-!wiki/topics/
-!wiki/topics/**
-!README.md
-!CLAUDE.md
+# 例外：唯独追踪各主题目录里的 .md 文件
+!AI-Agent/
+!AgentFramework/
+!Ai/
+!Celery/
+!ClickHouse/
+!Codex/
+!DeerFlow/
+!Excalidraw/
+!FastAPI-LangChain-LangGraph/
+!LLMDev/
+!LangChain/
+!LangGraph/
+!MarkItDown/
+!MySQL/
+!OnlyOffice/
+!OpenClaw/
+!OpenClaw-Skills/
+!PDF转图片/
+!Python/
+!RAGFlow/
+!Redis/
+!Skill/
+!Superpowers/
+!Text-to-SQL/
+!招投标智能体/
+!智能体/
+!codex-extension-guide/
+
+# 各主题目录下所有内容
+AI-Agent/**
+AgentFramework/**
+Ai/**
+Celery/**
+ClickHouse/**
+Codex/**
+DeerFlow/**
+Excalidraw/**
+FastAPI-LangChain-LangGraph/**
+LLMDev/**
+LangChain/**
+LangGraph/**
+MarkItDown/**
+MySQL/**
+OnlyOffice/**
+OpenClaw/**
+OpenClaw-Skills/**
+PDF转图片/**
+Python/**
+RAGFlow/**
+Redis/**
+Skill/**
+Superpowers/**
+Text-to-SQL/**
+招投标智能体/**
+智能体/**
+codex-extension-guide/**
+
+# gitignore 本身
 !.gitignore
