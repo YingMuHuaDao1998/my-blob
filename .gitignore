@@ -1,0 +1,40 @@
+# =============================================
+# my-blob 只跟踪 wiki/topics/（博客原文）
+# 其他全部 ignore
+# =============================================
+
+# AI Wiki 生成层（不跟踪）
+wiki/sources
+wiki/concepts
+wiki/entities
+wiki/syntheses
+wiki/index.md
+wiki/log.md
+
+# 原始资料收件箱（不跟踪）
+raw/
+
+# 统一媒体资源（不跟踪）
+assets/
+
+# Agent Skills 配置（不跟踪）
+.claude/
+
+# Obsidian 本地配置（不跟踪）
+.obsidian/
+
+# 根目录配置文件
+.DS_Store
+
+# =============================================
+# 核心规则：忽略所有，其他例外
+# =============================================
+*
+
+# 例外：唯独追踪 wiki/topics/
+!wiki/
+!wiki/topics/
+!wiki/topics/**
+!README.md
+!CLAUDE.md
+!.gitignore
