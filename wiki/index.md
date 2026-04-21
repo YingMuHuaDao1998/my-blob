@@ -199,3 +199,7 @@ last_updated: 2026-04-21
 ## Ai（AI 综合）
 
 - [[topics/Ai/框架/LangChain/未命名.md]] — LangChain 相关笔记（草稿）
+
+## AgentFramework（Agent 框架构建）
+
+- [[AgentFramework/LangChain+LangGraph高质量多子代理智能体设计文档.md]] — 基于 LangChain + LangGraph 的通用任务型多子代理系统设计文档
