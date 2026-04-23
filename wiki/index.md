@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 type: index
-last_updated: 2026-04-21
+last_updated: 2026-04-23
 ---
 
 # Wiki Index
@@ -76,7 +76,7 @@ last_updated: 2026-04-21
 - [[topics/LangChain/SQL-Agent使用指南.md]] — LangChain SQL Agent 使用指南：自然语言查数据库、自动推理 + 错误自修复
 - [[topics/LangChain/LangSmith-Threads使用指南.md]] — LangSmith Threads 使用指南
 - [[topics/LangChain/LangGraph-Agent-Server-从零实现-Threads持久化.md]] — LangGraph Agent Server 从零实现 Threads 持久化
-
+- [[LangChain/LangChain预置Middleware使用指南.md]] — LangChain / Deep Agents 预置中间件总览：摘要、审批、限流、重试、上下文治理与子代理
 ---
 
 ## LangGraph（Agent 图编排）

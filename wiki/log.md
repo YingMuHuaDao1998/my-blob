@@ -1,7 +1,7 @@
 ---
 title: Wiki Log
 type: log
-last_updated: 2026-04-21
+last_updated: 2026-04-23
 ---
 
 # Wiki Log
@@ -55,4 +55,16 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **变更**: 更新 [[wiki/index.md]] AgentFramework 索引
 - **冲突**: 无
 - **备注**: 由本次对话总结生成，偏通用任务型多子代理架构设计
+
+## [2026-04-21] query | 什么是 LangChain
+
+- **检索**: [[LangChain/LangChain学习总结.md]]、[[LangChain/LangChain最佳实践.md]]、[[LangChain/LangChain生态三件套使用指南.md]]
+- **输出**: 说明 LangChain 的定义、定位、核心组成及与 LangGraph 的关系
+
+## [2026-04-23] archive | 整理 Prebuilt middleware 中文笔记
+
+- **变更**: 新增 [[LangChain/LangChain预置Middleware使用指南.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引
+- **冲突**: 无
+- **备注**: 基于 [[raw/01-articles/Prebuilt middleware]] 翻译整理
 
