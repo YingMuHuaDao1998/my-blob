@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 type: index
-last_updated: 2026-04-23
+last_updated: 2026-04-24
 ---
 
 # Wiki Index
@@ -77,6 +77,7 @@ last_updated: 2026-04-23
 - [[topics/LangChain/LangSmith-Threads使用指南.md]] — LangSmith Threads 使用指南
 - [[topics/LangChain/LangGraph-Agent-Server-从零实现-Threads持久化.md]] — LangGraph Agent Server 从零实现 Threads 持久化
 - [[LangChain/LangChain预置Middleware使用指南.md]] — LangChain / Deep Agents 预置中间件总览：摘要、审批、限流、重试、上下文治理与子代理
+- [[LangChain/DeepAgent加载Skill与Subagent示例.md]] — DeepAgent Python 示例：主 agent、本地 skill、自定义 subagent 与子代理 skills 配置
 ---
 
 ## LangGraph（Agent 图编排）
