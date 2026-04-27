@@ -1,7 +1,7 @@
 ---
 title: Wiki Log
 type: log
-last_updated: 2026-04-24
+last_updated: 2026-04-27
 ---
 
 # Wiki Log
@@ -74,4 +74,11 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **变更**: 更新 [[wiki/index.md]] LangChain 索引
 - **冲突**: 无
 - **备注**: 归档本次关于 DeepAgent、skills 与自定义 subagent 的示例说明
+
+## [2026-04-27] archive | 整理 DeepAgent Skills 与 Middleware 关系图解
+
+- **变更**: 新增 [[LangChain/DeepAgent Skills与Middleware关系图解.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引
+- **冲突**: 无
+- **备注**: 归档本次关于 DeepAgent Skills 与 Middleware 分工关系的说明与图示
 
