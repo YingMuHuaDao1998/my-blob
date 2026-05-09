@@ -1,7 +1,7 @@
 ---
 title: Wiki Log
 type: log
-last_updated: 2026-04-27
+last_updated: 2026-05-09
 ---
 
 # Wiki Log
@@ -46,7 +46,7 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 
 ## [2026-04-21] query | LangChain + LangGraph 多子代理智能体搭建
 
-- **检索**: [[topics/AI-Agent/AI Agent开发实践指南：经典范式与实例.md]]、[[topics/AgentFramework/Agent构建核心方法对比：LangChain_LangGraph_DeepAgents.md]]、[[topics/AgentFramework/构建支持Skill的多智能体系统.md]]
+- **检索**: [[AI-Agent/AI Agent开发实践指南：经典范式与实例.md]]、[[AgentFramework/Agent构建核心方法对比：LangChain_LangGraph_DeepAgents.md]]、[[AgentFramework/构建支持Skill的多智能体系统.md]]
 - **输出**: 结合知识库与 LangChain / LangGraph 官方文档，回答多子代理高质量搭建方案
 
 ## [2026-04-21] archive | 归档 LangChain + LangGraph 多子代理设计文档
@@ -81,4 +81,38 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **变更**: 更新 [[wiki/index.md]] LangChain 索引
 - **冲突**: 无
 - **备注**: 归档本次关于 DeepAgent Skills 与 Middleware 分工关系的说明与图示
+
+## [2026-04-27] ingest | 导入 LangChain 预置 Middleware 资料
+
+- **变更**: 新增 [[wiki/sources/摘要-langchain-prebuilt-middleware]]
+- **变更**: 新增 [[wiki/concepts/Agent Middleware 治理]]、[[wiki/concepts/上下文治理中间件]]
+- **变更**: 新增 [[wiki/entities/LangChain Middleware]]、[[wiki/entities/Deep Agents]]
+- **变更**: 更新 [[wiki/index.md]] 摘要层、概念层、实体层索引
+- **冲突**: 无
+- **备注**: 已归档源文件 `raw/01-articles/Prebuilt middleware.md`
+
+## [2026-04-28] lint | 知识库体检
+
+- **孤岛**: 0个（已修复0个，剩余0个待处理）
+- **死链**: 24个（已修复24个）
+- **index不同步**: 6个（已修复）
+- **未 ingest**: 0个
+- **备注**: 忽略 `.claude/skills/` 与 `CLAUDE.md` 中的示例 wikilink，不作为真实死链
+
+## [2026-04-28] query | 什么是 Superpowers
+
+- **检索**: [[Superpowers/使用指南.md]]、[[Superpowers/Superpowers与OpenSpec结合使用指南.md]]、[[Superpowers/Codex集成指南.md]]
+- **输出**: 说明 Superpowers 的定义、工作流定位、技能机制与与 OpenSpec 的关系
+
+## [2026-04-29] query | LangChain createAgent 主从 Agent 与异步 Subagents
+
+- **检索**: [[LangChain/LangChain学习总结.md]]、[[AgentFramework/构建支持Skill的多智能体系统.md]]、LangChain 官方 Subagents 文档
+- **输出**: 说明 createAgent 中 supervisor/subagents 模式、同步工具封装与后台异步 job 三工具模式
+
+## [2026-05-09] archive | 归档 create_agent 主从 Agent 异步化指南
+
+- **变更**: 新增 [[LangChain/LangChain create_agent主从Agent异步化指南.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引
+- **冲突**: 无
+- **备注**: 基于 LangChain Python Subagents 官方文档与本次对话整理，聚焦 LangGraph supervisor + async worker 方案
 
