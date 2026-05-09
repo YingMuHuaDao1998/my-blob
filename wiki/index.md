@@ -77,6 +77,7 @@ last_updated: 2026-05-09
 - [[LangChain/DeepAgent加载Skill与Subagent示例.md]] — DeepAgent Python 示例：主 agent、本地 skill、自定义 subagent 与子代理 skills 配置
 - [[LangChain/DeepAgent Skills与Middleware关系图解.md]] — 从分层与运行时角度解释 Skills 与 Middleware 的分工、协作关系与典型组合方式
 - [[LangChain/LangChain create_agent主从Agent异步化指南.md]] — 解释 create_agent 主从 Agent 的同步、协程异步与后台异步三种模式，并给出 LangGraph supervisor + async worker 方案
+- [[LangChain/LangGraph fan-out与fan-in并发子智能体指南.md]] — 解释 LangGraph 中 planner → parallel executors → merge 的 fan-out / fan-in 多子智能体并发模式
 ---
 
 ## LangGraph（Agent 图编排）

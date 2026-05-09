@@ -116,3 +116,15 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **冲突**: 无
 - **备注**: 基于 LangChain Python Subagents 官方文档与本次对话整理，聚焦 LangGraph supervisor + async worker 方案
 
+## [2026-05-09] query | create_agent 先规划再执行
+
+- **检索**: [[AgentFramework/构建支持Skill的多智能体系统.md]]、[[LangChain/LangChain学习总结.md]]、LangChain 官方 Subagents / Custom workflow / Structured output 文档
+- **输出**: 说明 planner-executor 模式应使用 create_agent + LangGraph，自定义 planner 节点输出 plan，再派发子代理执行
+
+## [2026-05-09] archive | 归档 LangGraph fan-out / fan-in 并发子智能体指南
+
+- **变更**: 新增 [[LangChain/LangGraph fan-out与fan-in并发子智能体指南.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引
+- **冲突**: 无
+- **备注**: 基于本次关于 Subagents、single dispatch tool 与 LangGraph 并发模式的对话整理
+
