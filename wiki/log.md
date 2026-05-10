@@ -128,3 +128,20 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **冲突**: 无
 - **备注**: 基于本次关于 Subagents、single dispatch tool 与 LangGraph 并发模式的对话整理
 
+## [2026-05-09] query | Subagent middleware 与官方 subagents tool 模式区别
+
+- **检索**: [[Clippings/Subagents.md]]、Deep Agents 官方 Subagents / Async subagents / Middleware 文档
+- **输出**: 说明 Subagent middleware 的定位、与手工把子智能体封装成 tool 的异同，以及同步/异步两条实现路线
+
+## [2026-05-09] query | master agent 指挥多个同级 agent
+
+- **检索**: [[Clippings/Subagents.md]]、[[AgentFramework/构建支持Skill的多智能体系统.md]]、LangChain 官方 Multi-agent / Subagents 文档
+- **输出**: 说明这是 supervisor/subagents 模式；若无中心控制则转为 handoff / router；并区分 create_agent、LangGraph、Deep Agents 的适用边界
+
+
+## [2026-05-10] archive | 归档 LangGraph 工作流并行化详解
+
+- **变更**: 新增 [[LangChain/LangGraph工作流并行化详解.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引与更新时间
+- **冲突**: 无
+- **备注**: 基于 [[Clippings/Workflows and agents.md]] 中的并行化章节与本次关于 LangGraph 工作流并发模式的讲解整理
