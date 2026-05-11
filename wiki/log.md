@@ -145,3 +145,10 @@ Append-only 操作日志。每次 ingest/query/lint 操作后追加记录。
 - **变更**: 更新 [[wiki/index.md]] LangChain 索引与更新时间
 - **冲突**: 无
 - **备注**: 基于 [[Clippings/Workflows and agents.md]] 中的并行化章节与本次关于 LangGraph 工作流并发模式的讲解整理
+
+## [2026-05-11] archive | 归档 LangGraph 动态并行与 Send 详解
+
+- **变更**: 新增 [[LangChain/LangGraph动态并行与Send详解.md]]
+- **变更**: 更新 [[wiki/index.md]] LangChain 索引与更新时间
+- **冲突**: 无
+- **备注**: 基于 LangGraph 官方 Graph API / Workflows and agents 文档与本次关于 Send 的讲解整理

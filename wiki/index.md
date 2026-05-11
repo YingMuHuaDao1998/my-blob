@@ -1,7 +1,7 @@
 ---
 title: Wiki Index
 type: index
-last_updated: 2026-05-10
+last_updated: 2026-05-11
 ---
 
 # Wiki Index
@@ -79,6 +79,7 @@ last_updated: 2026-05-10
 - [[LangChain/LangChain create_agent主从Agent异步化指南.md]] — 解释 create_agent 主从 Agent 的同步、协程异步与后台异步三种模式，并给出 LangGraph supervisor + async worker 方案
 - [[LangChain/LangGraph fan-out与fan-in并发子智能体指南.md]] — 解释 LangGraph 中 planner → parallel executors → merge 的 fan-out / fan-in 多子智能体并发模式
 - [[LangChain/LangGraph工作流并行化详解.md]] — 系统解释 LangGraph 固定并行 / 动态并行、fan-out / fan-in、状态合并与常见风险
+- [[LangChain/LangGraph动态并行与Send详解.md]] — 系统解释 Send 的语义、动态 fan-out、worker 局部状态、reducer 合并与 orchestrator-worker 模式
 ---
 
 ## LangGraph（Agent 图编排）
